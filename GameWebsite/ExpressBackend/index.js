@@ -16,9 +16,12 @@ app.use(function (error, req, res, next) {
       next();
     }
   });
-  
-//initialize routes 
+
+//initialize routes for users
 app.use('/api',require('./routes/Users/user')); 
+
+//initialize routes for games
+app.use('/api',require('./routes/Games/game'));
  
 //listen for requests
 const port=process.env.PORT||3000;
