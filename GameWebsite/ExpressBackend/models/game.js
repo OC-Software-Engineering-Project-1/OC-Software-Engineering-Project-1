@@ -17,9 +17,11 @@ const GameSchema = new mongoose.Schema({
         type:Number,
         required:true,
         trim:true
-    },
-    
-    
-
+    }
     
 })
+
+
+
+const Game=mongoose.model('Game', GameSchema)
+module.exports= Game
