@@ -22,6 +22,9 @@ app.use('/api',require('./routes/Users/user'));
 
 //initialize routes for games
 app.use('/api',require('./routes/Games/game'));
+
+//initialize routes for scores
+app.use('/api',require('./routes/Scores/score'));
  
 //listen for requests
 const port=process.env.PORT||3000;
