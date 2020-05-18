@@ -13,7 +13,12 @@
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.0",
     "debug": "^2.2.0",
+<<<<<<< HEAD
     "express": "^4.17.1",
+=======
+    "express": "^4.14.0",
+    "mongoose": "^5.9.14",
+>>>>>>> cdcf67dfbd553c11c6438fc600b088bc7d6556ec
     "morgan": "^1.7.0",
     "nodemon": "^2.0.4",
     "pug": "^2.0.0-beta6",
