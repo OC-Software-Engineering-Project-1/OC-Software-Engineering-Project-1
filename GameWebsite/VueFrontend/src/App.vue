@@ -1,28 +1,26 @@
 <template>
     <div id="app">
-        <p>
-            <router-link :to="{ name: 'home', params: { title: 'Board Game Website' }}">Home</router-link>
-            <br/>
-            <router-link :to="{ name: 'gamelobbies', params: { lobbyList: lobbyListData }}">Game Lobbies</router-link>
-        </p>
-        <router-view />
+            <div id="nav">
+            <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
+            </div>
+            
+            <router-view @authenticated="setAuthenticated" />
+        
     </div>
 </template>
 
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 <script>
-    import Home from './components/Home.vue';
-    import GameLobbies from './components/GameLobbies.vue';
-
     export default {
-        name: 'app',
-        components: {
-            Home,
-            GameLobbies
-        },
+        name: 'App',
         data() {
             return {
+                authenticated: false,
+                mockAccount:{
+                    username: "admin",                //Use this credentials for testing. Wait until Database is implemented to connect with backend
+                    password: "password",
+                },
                 lobbyListData: [
                     {
                         "gameTitle": "Cryptogram Game",
@@ -35,6 +33,19 @@
                         "capacity": "4"
                     }
                 ]
+            }
+        },
+        mounted() {
+            if(!this.authenticated) {
+                this.$router.replace({ name: "login" });
+            }
+        },
+        methods: {
+            setAuthenticated(status) {
+                this.authenticated = status;
+            },
+            logout() {
+                this.authenticated = false;
             }
         }
     };
