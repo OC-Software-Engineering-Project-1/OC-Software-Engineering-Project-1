@@ -16,7 +16,7 @@ const GameSchema = new mongoose.Schema({
     frequency:{
         type:Number,
         required:true,
-        trim:true
+        default:0
     }
     
 })

@@ -10,18 +10,18 @@
     "name": ""
   },
   "dependencies": {
+    "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.0",
     "debug": "^2.2.0",
-<<<<<<< HEAD
     "express": "^4.17.1",
-=======
-    "express": "^4.14.0",
-    "mongoose": "^5.9.14",
->>>>>>> cdcf67dfbd553c11c6438fc600b088bc7d6556ec
+    "getconfig": "^4.5.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.15",
     "morgan": "^1.7.0",
     "nodemon": "^2.0.4",
     "pug": "^2.0.0-beta6",
-    "serve-favicon": "^2.3.0"
+    "serve-favicon": "^2.3.0",
+    "validator": "^13.0.0"
   }
 }

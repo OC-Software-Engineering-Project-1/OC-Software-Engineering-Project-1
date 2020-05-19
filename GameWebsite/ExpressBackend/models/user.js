@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 const jwt= require('jsonwebtoken')
 const bcrypt =require('bcrypt')
-const JWT_SECRET = "Thisisoursecret";
+const JWT_SECRET ="Thisisoursecret"
 //Relationships
 //https://stackoverflow.com/questions/26008555/foreign-key-mongoose
 //https://vegibit.com/mongoose-relationships-tutorial/
@@ -13,7 +13,7 @@ const UserSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    lastname: {
+    lastName: {
       type: String,
       required: true,
       trim: true,
@@ -35,7 +35,10 @@ const UserSchema = new mongoose.Schema(
         }
       },
     },
-
+    gamesWon:{
+        type:Number,
+        default:0
+    },
     password: {
       type: String,
       required: true,
@@ -45,16 +48,17 @@ const UserSchema = new mongoose.Schema(
     birthDate: {
       type: Date,
       required: false,
+      default:new Date(1999, 00, 01)  
     },
     isActive: {
       type: Boolean,
       default: true,
     },
     friendsList:[{
-        friend:{
+        
             type: mongoose.Schema.Types.ObjectId,
             ref:'User'
-        }
+        
     }],
     tokens: [
       {
@@ -84,7 +88,7 @@ UserSchema.statics.findByCredentials = async (email, password) => {
 };
 
 UserSchema.methods.generateAuthToken=async function(){
-    token=jwt.sign({_id:this._id.toString()}, process.env.JWT_SECRET||)   
+    token=jwt.sign({_id:this._id.toString()}, process.env.JWT_SECRET||JWT_SECRET)   
     this.tokens=this.tokens.concat({token})
     await this.save()
     return token
@@ -93,7 +97,7 @@ UserSchema.methods.generateAuthToken=async function(){
 
 UserSchema.methods.toJSON = function(){
     const  userObjects= this.toObject()
-    delete userObjects.password
+    //delete userObjects.password
     delete userObjects.tokens
     delete userObjects.avatar
     return userObjects
