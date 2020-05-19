@@ -9,7 +9,11 @@ var bodyParser = require('body-parser');
 
 
 var userRouter = require('./routes/users/user');
-
+var scoreRouter=require('./routes/scores/score');
+var gameRouter=require('./routes/Games/game');
+var gameSessionRoutes=require('./routes/GameSession/gameSession');
+var friendRequestRoutes=require('./routes/friendRequests/friendRequest');
+var groupRoutes=require('./routes/Group/group');
 require('./db/mongoose'); //Get db Connection
 
 var app = express();
@@ -25,7 +29,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(userRouter)
+app.use(userRouter);
+app.use(scoreRouter);
+app.use(gameRouter);
+app.use(gameSessionRoutes);
+app.use(friendRequestRoutes);
+app.use(groupRoutes);
+
+
+
 
 
 
