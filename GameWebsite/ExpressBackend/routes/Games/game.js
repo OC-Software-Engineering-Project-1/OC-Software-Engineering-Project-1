@@ -1,34 +1,78 @@
-const express=require('./node_modules/express');
+const express=require('express');
 const router=express.Router();
 
+
+const Game = require('../../models/game')
+
+const auth =require('../../middleware/auth')
 
 
 
 //get a list of games from the db
-router.get('/games',function(req,res){
-    res.send({type:'GET the list of games'});
+router.get('/games', async function(req,res){
+   try{
+      const games = await Game.find()
+      res.send(games)
+      }catch(e){
+         res.status(500).send(e)
+      }
+   
 });
 
 // get game from the db by Id
-router.get('/game/:id',function(req,res){
-   res.send({type:'GET one game'});
+router.get('/games/:id', async function(req,res){
+   const _id = req.params.id
+   try{
+      const game = await Game.findOne({_id})
+      res.send(game)
+   }catch(e){
+      res.status(400).send(e)
+   }
 });
 
 //add a new games  to the db
-router.post('/games',function(req,res){
-    console.log(req.body);
-   res.send({type:'POST',
-             name:req.body.name,
-             game:req.body.game
-});
+router.post('/games',async function(req,res){
+   const game = new Game(req.body)
+     try{
+         await game.save()
+         
+         res.status(201).send(game)
+     }catch(e){
+         res.status(400).send(e)
+     }
 }); 
 // update game in the db
-router.put('/game/:id',function(req,res){
-   res.send({type:'PUT game'});
+router.put('/games/:id',async function(req,res){
+   const _id = req.params.id
+const updates =  Object.keys(req.body)
+   try{
+      const game = await Game.findOne({_id})
+      updates.forEach((update)=>{
+           
+         game[update]=req.body[update]
+         
+     })
+     if(!score){
+      res.status(404).send(score)
+     }
+     await game.save()
+       res.status(201).send(game)
+   }catch(e){
+       res.status(400).send(e)
+   }
 }); 
 //delete game from the db
-router.delete('/game/:id',function(req,res){
-   res.send({type:'DELETE game'});
+router.delete('/games/:id',async function(req,res){
+   const _id = req.params.id
+   try{
+      const game = await Game.findOneAndDelete({_id})
+      if(!game){
+         return res.status(404).send()
+     }
+      res.send(game)
+   }catch(e){
+      res.status(400).send(e)
+   }
    
 }); 
 

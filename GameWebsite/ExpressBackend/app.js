@@ -9,6 +9,8 @@ var bodyParser = require('body-parser');
 
 
 var userRouter = require('./routes/users/user');
+var scoreRouter = require('./routes/scores/score');
+var gameRouter = require('./routes/games/game');
 
 require('./db/mongoose'); //Get db Connection
 
@@ -26,6 +28,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(userRouter)
+app.use(scoreRouter)
+app.use(gameRouter)
 
 
 

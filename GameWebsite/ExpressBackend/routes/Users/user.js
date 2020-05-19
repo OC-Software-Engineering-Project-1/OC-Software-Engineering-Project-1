@@ -63,7 +63,7 @@ router.post('/users/logout', auth, async function(req,res){
         res.status(500).send()
     }
 })
-//Logout user on all devices
+//Logout user from  all devices
 router.post('/users/logoutAll',auth, async function(req,res){
     try{
         req.user.tokens=[]
@@ -77,15 +77,20 @@ router.post('/users/logoutAll',auth, async function(req,res){
 router.put('/users/:id',auth, async function(req,res){
     const _id = req.params.id
     const updates = Object.keys(req.body)
-    const disallowedUpdates = ['tokens']
-    const isValidOperation = updates.every((update)=>!disallowedUpdates.includes(update))
+    const allowedUpdates = ['birthDate', 'isActive', 'friendsList','firstName', 'lastName',
+                            'password','nickName']
+    const isValidOperation = updates.every((update)=>allowedUpdates.includes(update))
     if(!isValidOperation){
         return res.status(400).send({'Error':'Invalid Updates!'});
     }
     try{
         const user = req.user
-        updates.forEach((update)=>user[update]=req.body[update])
-
+        updates.forEach((update)=>{
+           
+            user[update]=req.body[update]
+            
+        })
+        //Add logic to handle friendsList
         await user.save()
         res.send(user)
     }catch(e){
@@ -97,6 +102,10 @@ router.delete('/users/:id', async function(req,res){
     try{
     const _id = req.params.id
     const user = await User.findOneAndDelete({_id})
+    if(!user){
+        return res.status(404).send()
+    }
+    
     res.send(user)
     }catch(e){
         res.status(500).send()
