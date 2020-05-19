@@ -1,6 +1,8 @@
 
 const mongoose = require('mongoose');
 
+const Game = require('./game')
+const User = require('./user')
 
 const ScoreSchema = new mongoose.Schema({
 
@@ -10,6 +12,16 @@ const ScoreSchema = new mongoose.Schema({
         default:0,
         trim:true
     },
+    game:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Game'
+    },
+    user:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'User'
+    }
 
     
 })
+const Score=mongoose.model('Score', ScoreSchema)
+module.exports= Score

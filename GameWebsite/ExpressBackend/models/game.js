@@ -16,10 +16,12 @@ const GameSchema = new mongoose.Schema({
     frequency:{
         type:Number,
         required:true,
-        trim:true
-    },
-    
-    
-
+        default:0
+    }
     
 })
+
+
+
+const Game=mongoose.model('Game', GameSchema)
+module.exports= Game
