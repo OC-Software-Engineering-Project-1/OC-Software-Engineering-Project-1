@@ -5,7 +5,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
 
 const base = axios.create({
-  baseURL: "http://localhost:4000"
+  baseURL: "http://localhost:3000"
 });
 
 Vue.prototype.$http = base;
