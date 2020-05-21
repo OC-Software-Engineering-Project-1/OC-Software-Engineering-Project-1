@@ -44,16 +44,21 @@ router.post('/games',async function(req,res){
 // update game in the db
 router.put('/games/:id',async function(req,res){
    const _id = req.params.id
-const updates =  Object.keys(req.body)
+   const updates =  Object.keys(req.body)
    try{
       const game = await Game.findOne({_id})
+      const allowedUpdates = ['location','frequency', 'name']
+      const isValidOperation = updates.every((update)=>allowedUpdates.includes(update))
+      if(!isValidOperation){
+          return res.status(400).send({'Error':'Invalid Updates!'});
+      }
       updates.forEach((update)=>{
            
          game[update]=req.body[update]
          
      })
-     if(!score){
-      res.status(404).send(score)
+     if(!game){
+      res.status(404).send()
      }
      await game.save()
        res.status(201).send(game)

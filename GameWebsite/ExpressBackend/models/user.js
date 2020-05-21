@@ -86,7 +86,18 @@ UserSchema.statics.findByCredentials = async (email, password) => {
   }
   return user;
 };
+//adds a friend to the user's friendsList
+UserSchema.statics.addFriend = async (userId, friendId )=>{
+  const user = await User.findOne({ "_id":userId });
+  const friend = await User.findOne({ "_id":friendId });
+  if (!user||!friend) {
+    throw new Error("Unable to add friend");
+  }
+  
+  user.friendsList.push({"_id":friendId})
 
+};
+//Generates auth token
 UserSchema.methods.generateAuthToken=async function(){
     token=jwt.sign({_id:this._id.toString()}, process.env.JWT_SECRET||JWT_SECRET)   
     this.tokens=this.tokens.concat({token})
