@@ -86,7 +86,7 @@ UserSchema.statics.findByCredentials = async (email, password) => {
   }
   return user;
 };
-//adds a friend to the user's friendsList
+//adds a friend to the user's friendsList and vice versa
 UserSchema.statics.addFriend = async (userId, friendId )=>{
   const user = await User.findOne({ "_id":userId });
   const friend = await User.findOne({ "_id":friendId });
@@ -95,6 +95,8 @@ UserSchema.statics.addFriend = async (userId, friendId )=>{
   }
   
   user.friendsList.push({"_id":friendId})
+  friend.friendsList.push({"_id":userId})
+
 
 };
 //Generates auth token

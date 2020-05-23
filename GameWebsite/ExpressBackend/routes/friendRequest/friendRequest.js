@@ -4,6 +4,10 @@ const router=express.Router();
 
 const FriendRequest = require('../../models/friendRequest')
 
+
+const User = require('../../models/User')
+
+
 //get a list of all friendRequests from the db
 router.get('/friendRequests',async function(req,res){
    try{
@@ -61,13 +65,26 @@ router.delete('/friendRequests/:id',async function(req,res){
 
 //Accept Friend request
 router.post('/friendRequests/:id/accept', async function(req, res){
-
+ 
 
 })
 
 //Reject Friend request
 router.post('/friendRequests/:id/reject', async function(req, res){
+   const _id = req.params.id
+   try{
+      const request = FriendRequest.findOne({"_id":_id})
+      if(!request){
+         res.statusCode(404).send()
 
+      }
+      const requestorId = request['requestor'] 
+      const recipientId  = request['recipient']
+      await User.addFriend(requestorId, recipientId)
+      request['status']="ANSWERED"
+   }catch(e){
+      res.statusCode(500).send()
+   }
    
 })
 module.exports=router;

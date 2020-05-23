@@ -26,7 +26,7 @@ router.get('/users/:id', async function(req,res){
 });
 
  //Sign up
- router.post('/users/signup',async function(req,res){
+ router.post('/users',async function(req,res){
      const user = new User(req.body)
      try{
          await user.save()
