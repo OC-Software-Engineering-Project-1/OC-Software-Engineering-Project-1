@@ -45,14 +45,18 @@ router.put('/scores/:id', async function(req,res){
 const _id = req.params.id
 const updates =  Object.keys(req.body)
    try{
-      const score = await Game.findOne({_id})
+      const score = await Score.findOne({_id})
+      const allowedUpdates = ['gameId','userId', 'score']
+      const isValidOperation = updates.every((update)=>allowedUpdates.includes(update))
+      if(!isValidOperation){
+          return res.status(400).send({'Error':'Invalid Updates!'});
+      }
       updates.forEach((update)=>{
            
          score[update]=req.body[update]
-         
      })
      if(!score){
-      res.status(404).send(score)
+         res.status(404).send()
      }
      await score.save()
        res.status(201).send(score)
@@ -67,7 +71,7 @@ router.delete('/score/:id',async function(req,res){
    try{
       const score = await Score.findOneAndDelete({_id})
       if(!score){
-         return res.status(404).send()
+         res.status(404).send()
      }
       res.send(score)
    }catch(e){

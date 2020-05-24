@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const User = require('./user')
 
 const FriendRequestSchema = new mongoose.Schema({
-
+//Status={"Pending","Answered"}
     status:{
         type:String,
-        required:true,
-        default:"pending",
+        enum:["PENDING","ANSWERED"],
+        default:"PENDING",
         trim:true
        },
     requestor:{

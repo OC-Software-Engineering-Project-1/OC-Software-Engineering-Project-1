@@ -10,11 +10,6 @@ const GameSessionSchema = new mongoose.Schema({
         required:true,
         trim:true
     },
-    frequency:{
-        type:Number,
-        required:true,
-        trim:true
-    },
     game:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Game'
@@ -27,8 +22,7 @@ const GameSessionSchema = new mongoose.Schema({
         
     }],
     groups:[
-        {
-       
+        {       
             type:mongoose.Schema.Types.ObjectId,
             ref:'Group'
         
@@ -36,5 +30,35 @@ const GameSessionSchema = new mongoose.Schema({
 
         
 })
+
+GameSessionSchema.methods.addUser=async (userId)=>{
+    const user = User.findOne({"_id":userId})
+    if(!user){
+        throw("Unable to add user!")
+    }
+    this.users.push({"_id":userId})
+};
+GameSessionSchema.methods.removeUser=async (userId)=>{
+    const user = User.findOne({"_id":userId})
+    if(!user){
+        throw("Unable to add user!")
+    }
+    this.users.filter((user)=>{ return user!=userId})
+};
+GameSessionSchema.methods.addGroup=async (groupId)=>{
+    const group = Group.findOne({"_id":groupId})
+    if(!group){
+        throw("Unable to add group!")
+    }
+    this.groups.push({"_id":groupId})
+};
+GameSessionSchema.methods.removeGroup=async (groupId)=>{
+    const group = Group.findOne({"_id":groupId})
+    if(!group){
+        throw("Unable to add user!")
+    }
+    this.groups.filter((group)=>{ return group!=groupId})
+};
+
 const GameSession=mongoose.model('GameSession', GameSessionSchema)
 module.exports= GameSession

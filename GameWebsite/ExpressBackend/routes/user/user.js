@@ -77,8 +77,8 @@ router.post('/users/logoutAll',auth, async function(req,res){
 router.put('/users/:id',auth, async function(req,res){
     const _id = req.params.id
     const updates = Object.keys(req.body)
-    const allowedUpdates = ['birthDate', 'isActive', 'friendsList','firstName', 'lastName',
-                            'password','nickName']
+    const allowedUpdates = ['birthDate', 'isActive', 'firstName', 'lastName',
+                            'password','nickName', 'email']
     const isValidOperation = updates.every((update)=>allowedUpdates.includes(update))
     if(!isValidOperation){
         return res.status(400).send({'Error':'Invalid Updates!'});

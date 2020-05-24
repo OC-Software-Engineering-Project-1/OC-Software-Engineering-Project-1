@@ -8,18 +8,14 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 
-var userRouter = require('./routes/users/user');
-<<<<<<< HEAD
-var scoreRouter=require('./routes/scores/score');
-var gameRouter=require('./routes/Games/game');
-var gameSessionRoutes=require('./routes/GameSession/gameSession');
-var friendRequestRoutes=require('./routes/friendRequests/friendRequest');
-var groupRoutes=require('./routes/Group/group');
-=======
-var scoreRouter = require('./routes/scores/score');
-var gameRouter = require('./routes/games/game');
+var userRouter = require('./routes/user/user');
+var scoreRouter=require('./routes/score/score');
+var gameRouter=require('./routes/game/game');
+var gameSessionRoutes=require('./routes/gameSession/gameSession');
+var friendRequestRoutes=require('./routes/friendRequest/friendRequest');
+var groupRoutes=require('./routes/group/group');
 
->>>>>>> bf2c6146269cc4bf56b9d6cd80a754ecdc245b0b
+
 require('./db/mongoose'); //Get db Connection
 
 var app = express();
@@ -35,23 +31,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-<<<<<<< HEAD
 app.use(userRouter);
 app.use(scoreRouter);
 app.use(gameRouter);
 app.use(gameSessionRoutes);
 app.use(friendRequestRoutes);
 app.use(groupRoutes);
-
-
-
-=======
-app.use(userRouter)
-app.use(scoreRouter)
-app.use(gameRouter)
->>>>>>> bf2c6146269cc4bf56b9d6cd80a754ecdc245b0b
-
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
