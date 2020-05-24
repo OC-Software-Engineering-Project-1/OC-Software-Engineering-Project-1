@@ -9,18 +9,27 @@ const routes = [
     {
         path: "/home",
         name: "home",
-        component: Home
+        component: Home,
+        meta: {
+            requiresAuth: true
+          }
     },
     {
         path: "/gamelobbies",
         name: "gamelobbies",
-        component: GameLobbies
+        component: GameLobbies,
+        meta: {
+            requiresAuth: true
+          }
     },
     {
         path: "/game",
         name: "game",
         component: Game,
-        props: true
+        props: true,
+        meta: {
+            requiresAuth: true
+          }
     },
     {
         path: "/",
@@ -37,5 +46,18 @@ const router = new VueRouter({
     mode: "history",
     base: process.env.BASE_URL,
     routes
+});
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+      if (localStorage.getItem("jwt") == null) {
+        next({
+          path: "/"
+        });
+      } else {
+        next();
+      }
+    } else {
+      next();
+    }
 });
 export default router;
