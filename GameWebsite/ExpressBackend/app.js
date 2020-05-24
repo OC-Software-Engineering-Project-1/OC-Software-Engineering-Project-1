@@ -7,8 +7,16 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+
+var userRouter = require('./routes/user/user');
+var scoreRouter=require('./routes/score/score');
+var gameRouter=require('./routes/game/game');
+var gameSessionRoutes=require('./routes/gameSession/gameSession');
+var friendRequestRoutes=require('./routes/friendRequest/friendRequest');
+var groupRoutes=require('./routes/group/group');
+
+
+require('./db/mongoose'); //Get db Connection
 
 var app = express();
 
@@ -23,9 +31,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', routes);
-app.use('/users', users);
+app.use(userRouter);
+app.use(scoreRouter);
+app.use(gameRouter);
+app.use(gameSessionRoutes);
+app.use(friendRequestRoutes);
+app.use(groupRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -61,5 +72,5 @@ app.use(function (err, req, res, next) {
 app.set('port', process.env.PORT || 3000);
 
 var server = app.listen(app.get('port'), function () {
-    debug('Express server listening on port ' + server.address().port);
+    console.log('Express server listening on port ' + server.address().port);
 });
