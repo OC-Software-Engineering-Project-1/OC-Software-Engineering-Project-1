@@ -5,7 +5,7 @@ const router=express.Router();
 const FriendRequest = require('../../models/friendRequest')
 
 
-const User = require('../../models/User')
+const User = require('../../models/user')
 
 
 //get a list of all friendRequests from the db
