@@ -5,7 +5,7 @@
             <router-link :to="{ name: 'gamelobbies', params: { lobbyList: lobbyListData }}">Game Lobbies</router-link>
         </p>
         <ul class="list-group">
-              <li class="list-group-item">Name : {{ user.name }}</li>
+              <li class="list-group-item">Name : {{ user.firstName }}</li>
               <li class="list-group-item">Email : {{ user.email }}</li>
         </ul>
     </div>
@@ -37,7 +37,27 @@ export default {
     },    
   data() {
     return {
-      user: {}
+      user: {
+        firstName,
+        email
+      },
+      lobbyList: [
+                    {
+                        "gameTitle": "Cryptogram Game",
+                        "occupancy": "1",
+                        "capacity": "2",
+                        "gameID": "00001",
+                        "port": "1111"
+                    },
+                    {
+                        "gameTitle": "Kintsugi",
+                        "occupancy": "3",
+                        "capacity": "4",
+                        "gameID": "00002",
+                        "port": "2222"
+                    }
+                ]
+
     };
   },
   methods: {

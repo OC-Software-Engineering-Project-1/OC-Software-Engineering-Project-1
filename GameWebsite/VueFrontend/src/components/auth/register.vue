@@ -11,8 +11,32 @@
             type="text"
             id="name"
             class="form-control mb-5"
-            placeholder="Name"
-            v-model="register.name"
+            placeholder="First Name"
+            v-model="register.firstName"
+            required
+          />
+          <input
+            type="text"
+            id="name"
+            class="form-control mb-5"
+            placeholder="Last Name"
+            v-model="register.lastName"
+            required
+          />
+          <input
+            type="text"
+            id="name"
+            class="form-control mb-5"
+            placeholder="NickName"
+            v-model="register.nickName"
+            required
+          />
+          <input
+            type="date"
+            id="name"
+            class="form-control mb-5"
+            placeholder="Birth Date"
+            v-model="register.birthDate"
             required
           />
           <input
@@ -52,7 +76,10 @@ export default {
   data() {
     return {
       register: {
-        name: "",
+        firstName: "",
+        lastName: "",
+        birthDate: "",
+        nickName: "",
         email: "",
         password: ""
       }
@@ -61,22 +88,22 @@ export default {
   methods: {
     async registerUser() {
       try {
-        let response = await this.$http.post("http://localhost:3000/register", this.register);
-        console.log(response);
+        let response = await this.$http.post("http://localhost:3000/users", this.register);
+        //console.log(response);
         let token = response.data.token;
         if (token) {
           localStorage.setItem("jwt", token);
           this.$router.push("/");
-          swal("Success", "Registration Was successful", "success");
+          alert("Success", "Registration Was successful", "success");
         } else {
-          swal("Error", "Something Went Wrong", "error");
+          alert("Error", "Something Went Wrong", "error");
         }
       } catch (err) {
         let error = err.response;
         if (error.status == 409) {
-          swal("Error", error.data.message, "error");
+          alert("Error", error.data.message, "error");
         } else {
-          swal("Error", error.data.err.message, "error");
+          alert("Error", error.data.err.message, "error");
         }
       }
     }
