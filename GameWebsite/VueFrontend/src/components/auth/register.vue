@@ -11,8 +11,32 @@
             type="text"
             id="name"
             class="form-control mb-5"
-            placeholder="Name"
-            v-model="register.name"
+            placeholder="First Name"
+            v-model="register.firstName"
+            required
+          />
+          <input
+            type="text"
+            id="name"
+            class="form-control mb-5"
+            placeholder="Last Name"
+            v-model="register.lastName"
+            required
+          />
+          <input
+            type="text"
+            id="name"
+            class="form-control mb-5"
+            placeholder="NickName"
+            v-model="register.nickName"
+            required
+          />
+          <input
+            type="date"
+            id="name"
+            class="form-control mb-5"
+            placeholder="Birth Date"
+            v-model="register.birthDate"
             required
           />
           <input
@@ -52,14 +76,37 @@ export default {
   data() {
     return {
       register: {
-        name: "",
+        firstName: "",
+        lastName: "",
+        birthDate: "",
+        nickName: "",
         email: "",
         password: ""
       }
     };
   },
   methods: {
-    async registerUser() {}
+    async registerUser() {
+      try {
+        let response = await this.$http.post("http://localhost:3000/users", this.register);
+        //console.log(response);
+        let token = response.data.token;
+        if (token) {
+          localStorage.setItem("jwt", token);
+          this.$router.push("/");
+          alert("Success", "Registration Was successful", "success");
+        } else {
+          alert("Error", "Something Went Wrong", "error");
+        }
+      } catch (err) {
+        let error = err.response;
+        if (error.status == 409) {
+          alert("Error", error.data.message, "error");
+        } else {
+          alert("Error", error.data.err.message, "error");
+        }
+      }
+    }
   }
 };
 </script>
