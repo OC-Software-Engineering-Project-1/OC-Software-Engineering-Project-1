@@ -6,7 +6,7 @@ const FriendRequestSchema = new mongoose.Schema({
 //Status={"Pending","Answered"}
     status:{
         type:String,
-        enum:["PENDING","ANSWERED"],
+        enum:["PENDING","ACCEPTED"],
         default:"PENDING",
         trim:true
        },

@@ -14,10 +14,12 @@ const ScoreSchema = new mongoose.Schema({
     },
     game:{
         type:mongoose.Schema.Types.ObjectId,
+        required:true,
         ref:'Game'
     },
     user:{
         type:mongoose.Schema.Types.ObjectId,
+        required:true,
         ref:'User'
     }
 

@@ -18,7 +18,7 @@ router.get('/scores', async function(req,res){
 });
 
 // get score from the db by Id
-router.get('/score/:id',async function(req,res){
+router.get('/scores/:id',async function(req,res){
    const _id = req.params.id
    try{
       const score = await Score.findOne({_id})
@@ -66,7 +66,7 @@ const updates =  Object.keys(req.body)
 
 }); 
 //delete score from the db
-router.delete('/score/:id',async function(req,res){
+router.delete('/scores/:id',async function(req,res){
    const _id = req.params.id
    try{
       const score = await Score.findOneAndDelete({_id})

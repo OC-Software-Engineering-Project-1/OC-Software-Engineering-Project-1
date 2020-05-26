@@ -88,8 +88,10 @@ UserSchema.statics.findByCredentials = async (email, password) => {
 };
 //adds a friend to the user's friendsList and vice versa
 UserSchema.statics.addFriend = async (userId, friendId )=>{
+  console.log(userId, friendId)
   const user = await User.findOne({ "_id":userId });
   const friend = await User.findOne({ "_id":friendId });
+  console.log(user, friend)
   if (!user||!friend) {
     throw new Error("Unable to add friend");
   }
@@ -110,7 +112,7 @@ UserSchema.methods.generateAuthToken=async function(){
 
 UserSchema.methods.toJSON = function(){
     const  userObjects= this.toObject()
-    //delete userObjects.password
+    delete userObjects.password
     delete userObjects.tokens
     delete userObjects.avatar
     return userObjects

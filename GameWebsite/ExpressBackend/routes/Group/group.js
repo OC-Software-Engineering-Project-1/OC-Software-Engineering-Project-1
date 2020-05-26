@@ -42,11 +42,14 @@ router.post('/groups', async function(req,res){
     }
 }); 
 // update group in the db
-router.put('/group/:id',async function(req,res){
+router.put('/groups/:id',async function(req,res){
    const _id = req.params.id
    const updates =  Object.keys(req.body)
       try{
          const group = await Group.findOne({_id})
+         if(!group){
+            res.status(404).send()
+        }
          const allowedUpdates = ['name','users', 'groupId']
          const isValidOperation = updates.every((update)=>allowedUpdates.includes(update))
          if(!isValidOperation){
@@ -56,11 +59,9 @@ router.put('/group/:id',async function(req,res){
               
             group[update]=req.body[update]
         })
-        if(!group){
-            res.status(404).send()
-        }
+        
         await group.save()
-          res.status(201).send(group)
+         res.status(201).send(group)
       }catch(e){
           res.status(400).send(e)
       }
@@ -81,17 +82,17 @@ router.delete('/groups/:id',async function(req,res){
    
 }); 
 //add users to a group
-router.post('/groups/:group_id/users', async function(req,res){
+router.post('/groups/:groupId/users', async function(req,res){
    try{  
-   const user = await User.findOne({"_id":req.body.user_id})
+   const user = await User.findOne({"_id":req.body.userId})
 
-   const group = await Group.findOne({"_id":req.params.group_id})
+   const group = await Group.findOne({"_id":req.params.groupId})
    if(!user||!group){
          res.status(404).send()
       }
    group["users"].push({"_id":user._id})
    await group.save()
-   res.send(group)
+   res.status(201).send(group)
    }catch(e){
       res.status(500).send(e)
    }
@@ -100,18 +101,18 @@ router.post('/groups/:group_id/users', async function(req,res){
 
 });
 //Remove a user from a group
-router.delete('/groups/:group_id/users/:user_id', async function(req,res){
+router.delete('/groups/:groupId/users/:userId', async function(req,res){
    try{   
-      const user = await User.findOne({"_id":req.params.user_id})
-      const group = await Group.findOne({"_id":req.params.group_id})
+      const user = await User.findOne({"_id":req.params.userId})
+      const group = await Group.findOne({"_id":req.params.groupId})
          if(!user||!group){
             res.status(404).send()
          }
       group["users"].filter((user)=>{
-         return user !== req.params.user_id
+         return user !== req.params.userId
      })
      await group.save()
-     res.send(group)
+     res.send()
       }catch(e){
          res.status(500).send()
       }
