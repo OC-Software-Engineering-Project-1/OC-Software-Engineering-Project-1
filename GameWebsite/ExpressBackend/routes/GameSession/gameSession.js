@@ -10,7 +10,7 @@ const GameSession = require('../../models/gameSession')
 //get a list of all gamesSessions from the db
 router.get('/gameSessions',async function(req,res){
    try{
-      const gameSession = await GameSession.find()
+      const gameSession = await GameSession.find().populate('game users groups')
       res.send(gameSession)
       }catch(e){
          res.status(500).send(e)
@@ -21,7 +21,7 @@ router.get('/gameSessions',async function(req,res){
 router.get('/gameSessions/:id',async function(req,res){
    const _id = req.params.id
    try{
-      const gameSession = await GameSession.findOne({_id})
+      const gameSession = await GameSession.findOne({_id}).populate('game users groups')
       if(!gameSession){
          res.status(404).send()
       }
@@ -44,12 +44,12 @@ router.post('/gameSessions',async function(req,res){
  
 }); 
 // update gamesSession in the db
-router.put('/gameSession/:id',async function(req,res){
+router.put('/gameSessions/:id',async function(req,res){
    const _id = req.params.id
    const updates =  Object.keys(req.body)
       try{
          const gameSession = await GameSession.findOne({_id})
-         const allowedUpdates = ['is_active', 'game']
+         const allowedUpdates = ['isActive', 'game']
          const isValidOperation = updates.every((update)=>allowedUpdates.includes(update))
          if(!isValidOperation){
              return res.status(400).send({'Error':'Invalid Updates!'});
@@ -68,7 +68,7 @@ router.put('/gameSession/:id',async function(req,res){
       }
 }); 
 //delete gamesSession from the db
-router.delete('/gameSession/:id',async function(req,res){
+router.delete('/gameSessions/:id',async function(req,res){
       const _id = req.params.id
       try{
          const gameSession = await GameSession.findOneAndDelete({_id})
@@ -76,22 +76,25 @@ router.delete('/gameSession/:id',async function(req,res){
             return res.status(404).send()
         }
 
-         res.send(gameSession)
+         res.send()
       }catch(e){
          res.status(400).send(e)
       }
    
 }); 
 //remove user
-router.delete('/gameSession/:sessionId/users/:userId', async function (req, res){
+router.delete('/gameSessions/:sessionId/users/:userId', async function (req, res){
    try{
-      const gameSession = await GameSession. findOne({"_id":req.params.id})
-       if(!gameSession){
-            return res.status(404).send()
+      const gameSession = await GameSession. findOne({"_id":req.params.sessionId})
+      const user = await User.findOne({"_id":req.body.userId})
+      console.log(user, gameSession)
+      if(!gameSession||!user){
+         return res.status(404).send()
       }
-      gameSession.removeUser(req.params.userId)
+      
+      gameSession["users"].filter((user)=>{ return user!=req.params.userId})
       await gameSession.save()  
-       
+      res.send(user)
       }catch(e){
          res.status(500).send(e)
       }
@@ -100,15 +103,17 @@ router.delete('/gameSession/:sessionId/users/:userId', async function (req, res)
 
 
 //remove group
-router.delete('/gameSession/:sessionId/groups/:groupId', async function (req, res){
+router.delete('/gameSessions/:sessionId/groups/:groupId', async function (req, res){
    try{
-      const gameSession = await GameSession. findOne({"_id":req.params.id})
-       if(!gameSession){
+      const gameSession = await GameSession.findOne({"_id":req.params.sessionId})
+      const group = await Group.findOne({"_id":req.params.groupId})
+       if(!gameSession||!group){
             return res.status(404).send()
       }
-      gameSession.removeGroup(req.params.groupId)
+
+      gameSession["groups"].filter((group)=>{ return group!=req.params.groupId})
       await gameSession.save()  
-       
+      res.send(group)
       }catch(e){
          res.status(500).send(e)
       }
@@ -116,15 +121,20 @@ router.delete('/gameSession/:sessionId/groups/:groupId', async function (req, re
 })
 
 //add user
-router.delete('/gameSession/:sessionId/users/:userId', async function (req, res){
+router.post('/gameSessions/:sessionId/users', async function (req, res){
    try{
-      const gameSession = await GameSession. findOne({"_id":req.params.id})
-       if(!gameSession){
-            return res.status(404).send()
+      const gameSession = await GameSession.findOne({"_id":req.params.sessionId})
+      
+     
+      const user = await User.findOne({"_id":req.body.userId})
+      if(!gameSession||!user){
+         return res.status(404).send()
       }
-      gameSession.addUser(req.params.userId)
+
+
+      gameSession["users"].push({"_id":req.body.userId})
       await gameSession.save()  
-       
+      res.status(201).send(gameSession)
       }catch(e){
          res.status(500).send(e)
       }
@@ -133,16 +143,21 @@ router.delete('/gameSession/:sessionId/users/:userId', async function (req, res)
 
 
 //add group
-router.post('/gameSession/:sessionId/groups/:groupId', async function (req, res){
+router.post('/gameSessions/:sessionId/groups', async function (req, res){
    try{
-      const gameSession = await GameSession. findOne({"_id":req.params.id})
-       if(!gameSession){
+      const gameSession = await GameSession. findOne({"_id":req.params.sessionId})
+      const group =await Group.findOne({"_id":req.body.groupId})
+       if(!gameSession||!group){
             return res.status(404).send()
       }
-      gameSession.addGroup(req.params.groupId)
+      console.log(gameSession["groups"])
+      gameSession["groups"].push({"_id":req.body.groupId})
       await gameSession.save()  
-       
+      console.log("hello")
+      res.status(201).send(gameSession)
+
       }catch(e){
+
          res.status(500).send(e)
       }
    
