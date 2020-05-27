@@ -16,7 +16,6 @@ var gameSessionRoutes=require('./routes/gameSession/gameSession');
 var friendRequestRoutes=require('./routes/friendRequest/friendRequest');
 var groupRoutes=require('./routes/group/group');
 
-
 require('./db/mongoose'); //Get db Connection
 
 var app = express();
@@ -34,6 +33,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/games/empty_game', express.static(path.join(__dirname, 'games/empty_game')));
 app.use(userRouter);
 app.use(scoreRouter);
 app.use(gameRouter);
