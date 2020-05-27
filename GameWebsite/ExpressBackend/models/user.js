@@ -60,6 +60,11 @@ const UserSchema = new mongoose.Schema(
             ref:'User'
         
     }],
+    isAdmin:{
+      type:Boolean,
+      default:false,
+      required:true
+    },
     tokens: [
       {
         token: {

@@ -15,8 +15,21 @@ const auth =require('../../middleware/auth')
  });
 
 // get user from the db by Id
-router.get('/users/:id', async function(req,res){
+router.get('/admin/users/:id', auth,async function(req,res){
     const _id = req.params.id
+    try{
+        if(!req.user.isAdmin){
+            return res.status(401).send({'Error':'This operation requires admin priviledges'});
+        }
+        const user = await User.findOne({_id}).populate('friendsList')
+        res.send(user)
+    }catch(e){
+        res.status(500).send(e)
+    }
+});
+//get the current user
+router.get('/users/me', auth,async function(req,res){
+    const _id = req.user._id
     try{
         const user = await User.findOne({_id}).populate('friendsList')
         res.send(user)
@@ -73,12 +86,11 @@ router.post('/users/logoutAll',auth, async function(req,res){
         res.status(500).send()
     }
 })
-// update user in the db
-router.put('/users/:id',auth, async function(req,res){
-    const _id = req.params.id
+// update current user in the db
+router.put('/users/me',auth, async function(req,res){
     const updates = Object.keys(req.body)
     const allowedUpdates = ['birthDate', 'isActive', 'firstName', 'lastName',
-                            'password','nickName', 'email']
+                            'password','nickName', 'email','isAdmin']
     const isValidOperation = updates.every((update)=>allowedUpdates.includes(update))
     if(!isValidOperation){
         return res.status(400).send({'Error':'Invalid Updates!'});
@@ -94,13 +106,61 @@ router.put('/users/:id',auth, async function(req,res){
         await user.save()
         res.send(user)
     }catch(e){
-        res.status(400).send(e)
+        res.status(500).send(e)
     }
 }); 
-//delete user from the db
-router.delete('/users/:id', async function(req,res){
+//Updates the user with this id 
+router.put('/admin/users/:id',auth, async function(req,res){
+    const _id = req.params.id
+    if(!req.user.isAdmin){
+        return res.status(401).send({'Error':'This operation requires admin priviledges'});
+    }
+    const updates = Object.keys(req.body)
+    const allowedUpdates = ['birthDate', 'isActive', 'firstName', 'lastName',
+                            'password','nickName', 'email', 'isAdmin']
+    const isValidOperation = updates.every((update)=>allowedUpdates.includes(update))
+    if(!isValidOperation){
+        return res.status(400).send({'Error':'Invalid Updates!'});
+    }
+  
+    try{
+        const user =await User.findOne({"_id":_id})
+        updates.forEach((update)=>{
+           
+            user[update]=req.body[update]
+            
+        })
+        //Add logic to handle friendsList
+        await user.save()
+        res.send(user)
+    }catch(e){
+        res.status(500).send(e)
+    }
+}); 
+//delete user from the db by id
+router.delete('/admin/users/:id', auth, async function(req,res){
     try{
     const _id = req.params.id
+    if(!req.user.isAdmin){
+        return res.status(401).send({'Error':'This operation requires admin priviledges'});
+    }
+    const user = await User.findOneAndDelete({_id})
+
+    if(!user){
+        return res.status(404).send()
+    }
+    
+    res.send(user)
+    }catch(e){
+        res.status(500).send()
+    }
+
+    
+}); 
+//Deletes current user
+router.delete('/users/me', auth, async function(req,res){
+    try{
+    const _id = req.user._id
     const user = await User.findOneAndDelete({_id})
     if(!user){
         return res.status(404).send()
@@ -113,5 +173,4 @@ router.delete('/users/:id', async function(req,res){
 
     
 }); 
-
 module.exports=router;
