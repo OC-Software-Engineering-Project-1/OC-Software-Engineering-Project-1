@@ -3,7 +3,10 @@
     <div class="navbar"> 
       <nav> 
         <router-link v-for="(routes,index) in links"
-        :class="{last : index === (links.length-1)}"
+        :class="{
+          first : index === 0,
+          last : index === (links.length-1)
+        }"
         :key="routes.id" 
         :to="`${routes.page}`">
           {{ routes.text }}
@@ -31,6 +34,11 @@ export default {
         },
         {
           id: 2,
+          text: 'About',
+          page: '/about'
+        },
+        {
+          id: 3,
           text: 'Logout',
           page:'/logout'
         },
@@ -43,7 +51,7 @@ export default {
 <style scoped>
 .navbar {
     overflow: hidden;
-    background-color: #333;
+    background-color: #0041a8;
     padding: 0;
     display: block;
 }
@@ -60,17 +68,17 @@ export default {
     padding: 14px 16px;
     text-decoration: none;
     font-size: 25px;
-    border-right: 1px solid #bbb;
+    /* border-right: 1px solid #bbb; */
 }
 
 .navbar a:hover:not(.router-link-active) {
-  background-color: #ff6500;
+  background-color: #34d2eb;
   color: #FFFFFF;
   transition: all 0.25s;
 }
 
 .router-link-active {
-  background-color: #4CAF50;
+  background-color: #e4b303;
   transition: all 0.25s;
 }
 </style>
