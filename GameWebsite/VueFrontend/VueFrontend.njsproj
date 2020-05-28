@@ -33,19 +33,54 @@
     <Content Include="package-lock.json" />
     <Content Include="public\favicon.ico" />
     <Content Include="public\index.html" />
-    <Content Include="src\App.vue" />
-    <Content Include="src\components\auth\login.vue" />
-    <Content Include="src\components\auth\register.vue" />
-    <Content Include="src\views\Game.vue">
+    <Content Include="src\app.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\components\auth\login\login.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\components\auth\login\login.vue">
       <SubType>Code</SubType>
     </Content>
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="src\components\auth\register\register.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\components\auth\register\register.vue">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\router\index.js" />
-    <Content Include="src\views\GameLobbies.vue" />
-    <Content Include="src\views\Home.vue" />
-    <Content Include="src\views\login.vue" />
-    <Content Include="src\views\register.vue" />
+    <Content Include="src\views\game-lobbies\game-lobbies.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\views\game-lobbies\game-lobbies.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\views\game\game.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\views\game\game.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\views\home\home.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\views\home\home.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\views\login\login.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\views\login\login.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\views\register\register.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\views\register\register.vue">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="dist\" />
@@ -53,8 +88,15 @@
     <Folder Include="src\" />
     <Folder Include="src\components\" />
     <Folder Include="src\components\auth\" />
+    <Folder Include="src\components\auth\login\" />
+    <Folder Include="src\components\auth\register\" />
     <Folder Include="src\router\" />
     <Folder Include="src\views\" />
+    <Folder Include="src\views\game\" />
+    <Folder Include="src\views\game-lobbies\" />
+    <Folder Include="src\views\home\" />
+    <Folder Include="src\views\login\" />
+    <Folder Include="src\views\register\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="babel.config.js" />
