@@ -33,7 +33,10 @@
     <Content Include="package-lock.json" />
     <Content Include="public\favicon.ico" />
     <Content Include="public\index.html" />
-    <Content Include="src\app.vue">
+    <Content Include="src\app\app.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\app\app.vue">
       <SubType>Code</SubType>
     </Content>
     <Content Include="src\components\auth\login\login.js">
@@ -90,6 +93,7 @@
     <Folder Include="src\components\auth\" />
     <Folder Include="src\components\auth\login\" />
     <Folder Include="src\components\auth\register\" />
+    <Folder Include="src\app\" />
     <Folder Include="src\router\" />
     <Folder Include="src\views\" />
     <Folder Include="src\views\game\" />

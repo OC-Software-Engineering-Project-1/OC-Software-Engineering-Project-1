@@ -1,8 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
-import GameLobbies from "../views/GameLobbies.vue";
-import Game from "../views/Game.vue";
+import Home from "../views/home/home.vue";
+import GameLobbies from "../views/game-lobbies/game-lobbies.vue";
+import Game from "../views/game/game.vue";
 
 Vue.use(VueRouter);
 const routes = [
@@ -34,12 +34,12 @@ const routes = [
     {
         path: "/",
         name: "login",
-        component: () => import("../views/login.vue")
+        component: () => import("../views/login/login.vue")
     },
     {
         path: "/register",
         name: "register",
-        component: () => import("../views/register.vue")
+        component: () => import("../views/register/register.vue")
     }
 ];
 const router = new VueRouter({
