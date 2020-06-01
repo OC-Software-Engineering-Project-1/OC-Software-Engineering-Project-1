@@ -25,8 +25,6 @@ router.get('/games/:id', async function(req,res){
    try{
       const game = await Game.findOne({_id})
        //res.send(game)
-       //res.app.use(express.static(path.resolve('games/empty_game')));
-       res.sendFile(path.resolve(path.join('games', "empty_game", 'index.html')))
    }catch(e){
       res.status(400).send(e)
    }

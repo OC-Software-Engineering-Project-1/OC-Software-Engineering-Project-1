@@ -13,10 +13,10 @@ export default {
     },
     data() {
         return {
-            user: {
-                firstName,
-                email
-            },
+            //user: {
+            //    firstName,
+            //    email
+            //},
             lobbyList: [
                 {
                     "gameTitle": "Cryptogram Game",
