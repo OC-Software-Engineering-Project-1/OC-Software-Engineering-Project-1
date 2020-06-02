@@ -1,6 +1,9 @@
 <template>
 	<div id="app">
-		<router-view />
+		<div class="hidden">
+        <Navigation v-show="shouldShowNav"></Navigation>
+      </div>
+    <router-view />
 	</div>
 </template>
 
