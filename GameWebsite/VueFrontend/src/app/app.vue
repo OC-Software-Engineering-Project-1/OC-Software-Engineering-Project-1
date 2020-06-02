@@ -7,10 +7,4 @@
 	</div>
 </template>
 
-<style>
-[v-cloak].hidden {
-   display: none;
-}
-</style>
-
 <script src="./app.js"></script>
