@@ -126,7 +126,7 @@ router.post('/gameServers/:id?/leave', auth, async function(req, res){
             return res.status(400).send({"Error":"Host user can't leave game server"})
         }
 
-        gameServer.players= gameServer.players.filter((player)=> {console.log(player); return req.user.email.toString()!==player.toString()});
+        gameServer.players= gameServer.players.filter((player)=> { return req.user.email.toString()!==player.toString()});
       
         gameServer.numberOfConnectedPlayers = gameServer.players.length;   
         
