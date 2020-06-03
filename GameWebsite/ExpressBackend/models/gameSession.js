@@ -7,12 +7,15 @@ const GameSessionSchema = new mongoose.Schema({
 
     isActive:{
         type:Boolean,
-        required:true,
-        trim:true
+        required:false,
+        trim:true,
+        default:true
     },
     game:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'Game'
+        required:true,
+        ref:'Game',
+        
     },
     users:[
         {
@@ -36,6 +39,7 @@ GameSessionSchema.methods.addUser=async (userId)=>{
     if(!user){
         throw("Unable to add user!")
     }
+    console.log(this)
     this.users.push({"_id":userId})
 };
 GameSessionSchema.methods.removeUser=async (userId)=>{

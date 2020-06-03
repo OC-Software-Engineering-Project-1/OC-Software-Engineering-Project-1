@@ -6,7 +6,7 @@ const User = require('./user')
 
 const ScoreSchema = new mongoose.Schema({
 
-    score:{
+    wins:{
         type:Number,
         required:true,
         default:0,
@@ -14,10 +14,12 @@ const ScoreSchema = new mongoose.Schema({
     },
     game:{
         type:mongoose.Schema.Types.ObjectId,
+        required:true,
         ref:'Game'
     },
     user:{
         type:mongoose.Schema.Types.ObjectId,
+        required:true,
         ref:'User'
     }
 

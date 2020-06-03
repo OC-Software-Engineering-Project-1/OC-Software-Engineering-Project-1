@@ -1,9 +1,9 @@
 const express=require('express');
-const router=express.Router();
+const router = express.Router();
+const path = require('path');
 
 
 const Game = require('../../models/game')
-
 const auth =require('../../middleware/auth')
 
 
@@ -24,7 +24,7 @@ router.get('/games/:id', async function(req,res){
    const _id = req.params.id
    try{
       const game = await Game.findOne({_id})
-      res.send(game)
+       //res.send(game)
    }catch(e){
       res.status(400).send(e)
    }
