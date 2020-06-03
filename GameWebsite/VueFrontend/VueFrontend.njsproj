@@ -30,28 +30,15 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="games\empty_game\Build\Builds.data.unityweb" />
-    <Content Include="games\empty_game\Build\Builds.json" />
-    <Content Include="games\empty_game\Build\Builds.wasm.code.unityweb" />
-    <Content Include="games\empty_game\Build\Builds.wasm.framework.unityweb" />
-    <Content Include="games\empty_game\Build\UnityLoader.js" />
-    <Content Include="games\empty_game\index.html" />
-    <Content Include="games\empty_game\ReferencePic.PNG" />
-    <Content Include="games\empty_game\TemplateData\favicon.ico" />
-    <Content Include="games\empty_game\TemplateData\fullscreen.png" />
-    <Content Include="games\empty_game\TemplateData\progressEmpty.Dark.png" />
-    <Content Include="games\empty_game\TemplateData\progressEmpty.Light.png" />
-    <Content Include="games\empty_game\TemplateData\progressFull.Dark.png" />
-    <Content Include="games\empty_game\TemplateData\progressFull.Light.png" />
-    <Content Include="games\empty_game\TemplateData\progressLogo.Dark.png" />
-    <Content Include="games\empty_game\TemplateData\progressLogo.Light.png" />
-    <Content Include="games\empty_game\TemplateData\style.css" />
-    <Content Include="games\empty_game\TemplateData\UnityProgress.js" />
-    <Content Include="games\empty_game\TemplateData\webgl-logo.png" />
-    <Content Include="games\readme.txt" />
     <Content Include="package-lock.json" />
     <Content Include="public\favicon.ico" />
     <Content Include="public\index.html" />
+    <Content Include="src\services\api.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\services\gameService.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\app\app.js">
       <SubType>Code</SubType>
     </Content>
@@ -72,11 +59,20 @@
     <Content Include="src\components\auth\register\register.vue">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="src\components\navigation\navbar.css" />
+    <Content Include="src\components\navigation\navigation.js" />
+    <Content Include="src\components\navigation\navigation.vue" />
     <Content Include="src\router\index.js" />
     <Content Include="src\views\game-lobbies\game-lobbies.js">
       <SubType>Code</SubType>
     </Content>
     <Content Include="src\views\game-lobbies\game-lobbies.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\views\games\games.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\views\games\games.vue">
       <SubType>Code</SubType>
     </Content>
     <Content Include="src\views\game\game.js">
@@ -106,19 +102,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="dist\" />
-    <Folder Include="games\" />
-    <Folder Include="games\empty_game\" />
-    <Folder Include="games\empty_game\Build\" />
-    <Folder Include="games\empty_game\TemplateData\" />
     <Folder Include="public\" />
     <Folder Include="src\" />
+    <Folder Include="src\services\" />
     <Folder Include="src\components\" />
     <Folder Include="src\components\auth\" />
     <Folder Include="src\components\auth\login\" />
     <Folder Include="src\components\auth\register\" />
     <Folder Include="src\app\" />
+    <Folder Include="src\components\navigation\" />
     <Folder Include="src\router\" />
     <Folder Include="src\views\" />
+    <Folder Include="src\views\games\" />
     <Folder Include="src\views\game\" />
     <Folder Include="src\views\game-lobbies\" />
     <Folder Include="src\views\home\" />

@@ -32,6 +32,25 @@
   <ItemGroup>
     <Content Include="app.js" />
     <Content Include="db\mongoose.js" />
+    <Content Include="games\empty_game\Build\Builds.data.unityweb" />
+    <Content Include="games\empty_game\Build\Builds.json" />
+    <Content Include="games\empty_game\Build\Builds.wasm.code.unityweb" />
+    <Content Include="games\empty_game\Build\Builds.wasm.framework.unityweb" />
+    <Content Include="games\empty_game\Build\UnityLoader.js" />
+    <Content Include="games\empty_game\index.html" />
+    <Content Include="games\empty_game\readme.txt" />
+    <Content Include="games\empty_game\ReferencePic.PNG" />
+    <Content Include="games\empty_game\TemplateData\favicon.ico" />
+    <Content Include="games\empty_game\TemplateData\fullscreen.png" />
+    <Content Include="games\empty_game\TemplateData\progressEmpty.Dark.png" />
+    <Content Include="games\empty_game\TemplateData\progressEmpty.Light.png" />
+    <Content Include="games\empty_game\TemplateData\progressFull.Dark.png" />
+    <Content Include="games\empty_game\TemplateData\progressFull.Light.png" />
+    <Content Include="games\empty_game\TemplateData\progressLogo.Dark.png" />
+    <Content Include="games\empty_game\TemplateData\progressLogo.Light.png" />
+    <Content Include="games\empty_game\TemplateData\style.css" />
+    <Content Include="games\empty_game\TemplateData\UnityProgress.js" />
+    <Content Include="games\empty_game\TemplateData\webgl-logo.png" />
     <Content Include="middleware\auth.js" />
     <Content Include="models\friendRequest.js" />
     <Content Include="models\game.js" />
@@ -54,6 +73,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="db\" />
+    <Folder Include="games\" />
+    <Folder Include="games\empty_game\" />
+    <Folder Include="games\empty_game\Build\" />
+    <Folder Include="games\empty_game\TemplateData\" />
     <Folder Include="middleware\" />
     <Folder Include="models\" />
     <Folder Include="public\" />

@@ -34,6 +34,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/empty_game', express.static(path.join(__dirname, 'games/empty_game')));
 app.use(userRouter);
 app.use(scoreRouter);
 app.use(gameRouter);

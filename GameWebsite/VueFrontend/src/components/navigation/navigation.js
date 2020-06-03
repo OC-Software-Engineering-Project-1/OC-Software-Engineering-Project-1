@@ -12,8 +12,8 @@ export default {
                 },
                 {
                     id: 1,
-                    text: 'Game Lobbies',
-                    page:'/gamelobbies'
+                    text: 'Games',
+                    page:'/games'
                 },
                 {
                     id: 2,
