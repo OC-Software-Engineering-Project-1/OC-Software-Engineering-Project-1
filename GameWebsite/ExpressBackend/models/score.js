@@ -6,7 +6,7 @@ const User = require('./user')
 
 const ScoreSchema = new mongoose.Schema({
 
-    score:{
+    wins:{
         type:Number,
         required:true,
         default:0,

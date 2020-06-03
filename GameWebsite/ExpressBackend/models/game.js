@@ -9,10 +9,9 @@ const GameSchema = new mongoose.Schema({
         required:true,
         trim:true
     },
-    location:{
-        type:String,
-        required:true,
-        trim:true
+    port:{
+        type:Number,
+        required:true
     },
     frequency:{
         type:Number,
