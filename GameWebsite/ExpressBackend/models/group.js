@@ -8,10 +8,12 @@ const GroupSchema = new mongoose.Schema({
         required:true,
         trim:true
        },
-       users:[{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'User'
-       }],
+       users:[
+           {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'User'
+           }
+        ],
 
     
 })

@@ -9,8 +9,14 @@ const base = axios.create({
   baseURL: "http://localhost:3000"
 });
 
+
 Vue.prototype.$http = base;
 Vue.config.productionTip = false;
+const token = localStorage.getItem('token')
+if (token) {
+  Vue.prototype.$http.defaults.headers.common['Authorization'] = token
+}
+
 new Vue({
   router,
   render: h => h(App)

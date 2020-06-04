@@ -1,8 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/home/home.vue";
+import Games from "../views/games/games.vue";
 import GameLobbies from "../views/game-lobbies/game-lobbies.vue";
 import Game from "../views/game/game.vue";
+
 
 Vue.use(VueRouter);
 const routes = [
@@ -13,6 +15,14 @@ const routes = [
         meta: {
             requiresAuth: true
           }
+    },
+    {
+        path: "/games",
+        name: "games",
+        component: Games,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: "/gamelobbies",
@@ -31,6 +41,14 @@ const routes = [
             requiresAuth: true
           }
     },
+    {
+      path: "/logout",
+      name: "logout",
+      component: () => import("../views/logout/logout.vue"),
+      meta: {
+        requiresAuth: true
+    }
+  },
     {
         path: "/",
         name: "login",
