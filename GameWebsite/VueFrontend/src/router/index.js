@@ -5,6 +5,7 @@ import Games from "../views/games/games.vue";
 import GameLobbies from "../views/game-lobbies/game-lobbies.vue";
 import Game from "../views/game/game.vue";
 
+
 Vue.use(VueRouter);
 const routes = [
     {
@@ -40,6 +41,14 @@ const routes = [
             requiresAuth: true
           }
     },
+    {
+      path: "/logout",
+      name: "logout",
+      component: () => import("../views/logout/logout.vue"),
+      meta: {
+        requiresAuth: true
+    }
+  },
     {
         path: "/",
         name: "login",
