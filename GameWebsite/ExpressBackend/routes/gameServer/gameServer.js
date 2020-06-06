@@ -94,14 +94,14 @@ router.post('/gameServers/:id?/join', auth, async function(req, res){
         if(gameServer.players.includes(req.user.email)){
             return res.status(400).send({"Error":"Player already in game server"})
         }
-        if(gameServer.numberOfConnectedPlayers>=gameServer.capacity){
+        if(gameServer.players.length>=gameServer.capacity){
            return res.status(400).send({"Error":"Current gameServer's capacity has been reached"})
         }
 
         gameServer.players.push(req.user.email);
-        console.log(gameServer)  
+        // console.log(gameServer)  
         // gameServer.numberOfConnectedPlayers++;   
-        gameServer.numberOfConnectedPlayers = gameServer.players.length;   
+        //gameServer.numberOfConnectedPlayers = gameServer.players.length;   
         
         await gameServer.save();
         res.send(gameServer)
@@ -128,7 +128,7 @@ router.post('/gameServers/:id?/leave', auth, async function(req, res){
 
         gameServer.players= gameServer.players.filter((player)=> { return req.user.email.toString()!==player.toString()});
       
-        gameServer.numberOfConnectedPlayers = gameServer.players.length;   
+        // gameServer.numberOfConnectedPlayers = gameServer.players.length;   
         
         await gameServer.save();
         res.send(gameServer)

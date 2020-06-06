@@ -5,11 +5,16 @@ const User = require('./user')
 const Group = require('./group')
 const GameSessionSchema = new mongoose.Schema({
 
-    isActive:{
-        type:Boolean,
-        required:false,
-        trim:true,
-        default:true
+    // isActive:{
+    //     type:Boolean,
+    //     required:false,
+    //     trim:true,
+    //     default:true
+    // },
+    winner:{//username
+        type:String,
+        required:true,
+        ref:'User'
     },
     game:{
         type:mongoose.Schema.Types.ObjectId,
@@ -24,12 +29,12 @@ const GameSessionSchema = new mongoose.Schema({
             ref:'User'
         
     }],
-    groups:[
-        {       
-            type:mongoose.Schema.Types.ObjectId,
-            ref:'Group'
+    // groups:[
+    //     {       
+    //         type:mongoose.Schema.Types.ObjectId,
+    //         ref:'Group'
         
-    }],
+    // }],
 
         
 })
