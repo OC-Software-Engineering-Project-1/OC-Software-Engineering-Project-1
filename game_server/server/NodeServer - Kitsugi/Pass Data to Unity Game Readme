@@ -5,7 +5,8 @@ In order to passdata into the unity game:
         var unityInstance = UnityLoader.instantiate("unityContainer", "Build/_Build.json", {onProgress: UnityProgess});
 
 After the game is loaded, call this function:
-    unityInstance.SendMessage('Networking','SetUsername',username);
+    unityInstance.SendMessage('Networking','SetUsername', username); //Set username
+    unityInstance.SendMessage('Networking','SetPort', port); //Set port
 
 What the function does:
     This will send a message to the given object (Networking)
@@ -14,6 +15,11 @@ What the function does:
     
     That line must be exact. 
     The only thing that should vary is username and it should be a string of what the users username is.
+    The only thing that should vary is port and it should be a string of what the server's port is.
     
     Example:
     unityInstance.SendMessage('Networking','SetUsername',Nicky-G);
+
+
+
+
