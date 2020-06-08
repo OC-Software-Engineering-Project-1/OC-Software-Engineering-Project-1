@@ -8,6 +8,7 @@ import About from "../views/about/about.vue";
 import Account from "../views/account/account.vue";
 import Community from "../views/community/community.vue";
 
+
 Vue.use(VueRouter);
 const routes = [
     {
@@ -49,34 +50,47 @@ const routes = [
       component: () => import("../views/login/login.vue")
     },
     {
-      path: "/register",
-      name: "register",
-      component: () => import("../views/register/register.vue")
-    },
-    {
-      path: "/about",
-      name: "about",
-      component: About,
+      path: "/logout",
+      name: "logout",
+      component: () => import("../views/logout/logout.vue"),
       meta: {
         requiresAuth: true
-      }
-    },
-    {
-      path: "/account",
-      name: "account",
-      component: Account,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: "/community",
-      name: "community",
-      component: Community,
-      meta: {
-        requiresAuth: true
-      }
-    },
+    }
+  },
+  {
+      path: "/",
+      name: "login",
+      component: () => import("../views/login/login.vue")
+  },
+  {
+    path: "/about",
+    name: "about",
+    component: About,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: "/register",
+    name: "register",
+    component: () => import("../views/register/register.vue")
+  },
+  {
+    path: "/account",
+    name: "account",
+    component: Account,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: "/community",
+    name: "community",
+    component: Community,
+    meta: {
+      requiresAuth: true
+    }
+  },
 ];
 const router = new VueRouter({
     mode: "history",
