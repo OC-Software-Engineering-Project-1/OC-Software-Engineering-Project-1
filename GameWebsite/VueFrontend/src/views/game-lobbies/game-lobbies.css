@@ -1,0 +1,92 @@
+.gameImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -30%;
+    height: 200px;
+    width: 300px;
+}
+
+.gameInfo {
+    margin: 10%;
+    
+}
+
+.description {
+    display: block;
+    text-align: left;
+}
+
+.content {
+    margin: auto;
+    width: 75%;
+    height: 90%;
+    padding: 20px;
+    
+}
+
+.background:after{
+    content:".";
+    display:block;
+    height:0;
+    clear:both;
+    visibility:hidden;
+}
+
+/* Create two equal columns that floats next to each other */
+.left {
+    clear: both;
+    float: left;
+    width: 40%;
+    padding: 10px;
+}
+
+.background {
+    background-color:#033076;
+    margin-top: 10%;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.right {
+    float: left;
+    padding: 10px;
+    width: 60%;
+    
+}
+  
+  /* Clear floats after the columns */
+.row:after {
+    content: "";
+    clear: both;
+}
+
+.readMore {
+    float: right;
+    background-color: orangered;
+    border: none;
+    background: none;
+}
+
+.tabs {
+    margin-top: 10%;
+    margin-left: -20%;
+    border-bottom: none;
+}
+
+.tabContent {
+    background-color: white;
+    color: black;
+    margin-right: 10%;
+    border: none;
+}
+
+.nav-tabs {
+    border-bottom: none;
+    text-decoration: none;
+}
+
+
+
+
