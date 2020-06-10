@@ -17,6 +17,7 @@ var friendRequestRoutes=require('./routes/friendRequest/friendRequest');
 var groupRoutes=require('./routes/group/group');
 var gameServerRoutes=require('./routes/gameServer/gameServer');
 
+
 require('./db/mongoose'); //Get db Connection
 
 var app = express();
@@ -42,6 +43,11 @@ app.use(gameSessionRoutes);
 app.use(friendRequestRoutes);
 app.use(groupRoutes);
 app.use(gameServerRoutes);
+
+
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

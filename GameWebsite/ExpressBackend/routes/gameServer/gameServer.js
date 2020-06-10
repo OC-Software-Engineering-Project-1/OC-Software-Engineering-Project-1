@@ -1,7 +1,9 @@
 const express=require('express');
 const router=express.Router();
 
-
+//const startServer = require('./startServer').start;
+//const allocatePort = require('./startServer').allocatePort;
+const startServer = require('./startServer');
 const GameServer = require('../../models/gameServer')
 
 const auth =require('../../middleware/auth')
@@ -32,14 +34,20 @@ router.get('/gameServers/:id?', async function(req,res){
 
 //add a new gameServers  to the db
 router.post('/gameServers',async function(req,res){
+    
+    try{
+    const port = startServer.allocatePort();
+    startServer.start(port)
+    req.body["port"] = port;
     req.body["players"]=req.body["hostUser"]
+    console.log(req.body)
     const gameServer = new GameServer(req.body)
-     try{
+
          await gameServer.save()
          
          res.status(201).send(gameServer)
      }catch(e){
-         res.status(400).send(e)
+         res.status(400).send({"Error":e.message})
      }
 }); 
 // update gameServer in the db
@@ -136,5 +144,7 @@ router.post('/gameServers/:id?/leave', auth, async function(req, res){
         res.status(500).send(e)
     }
 })
+router.post('/gameServers/id/end', ()=>{
 
+})
 module.exports=router;

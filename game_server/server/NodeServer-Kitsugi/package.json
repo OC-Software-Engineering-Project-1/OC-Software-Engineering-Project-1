@@ -1,0 +1,23 @@
+{
+  "name": "oc-software-engineering-project-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OC-Software-Engineering-Project-1/OC-Software-Engineering-Project-1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OC-Software-Engineering-Project-1/OC-Software-Engineering-Project-1/issues"
+  },
+  "homepage": "https://github.com/OC-Software-Engineering-Project-1/OC-Software-Engineering-Project-1#readme",
+  "dependencies": {
+    "shortid": "^2.2.15",
+    "socket.io": "^2.3.0"
+  }
+}
