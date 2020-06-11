@@ -12,11 +12,11 @@ function start(port) {
   exec("node " + PATH + " " + port, (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
-      return;
+      throw new Error(error.message);
     }
     if (stderr) {
       console.log(`stderr: ${stderr}`);
-      return;
+      throw new Error(stderr);
     }
     console.log(`stdout: ${stdout}`);
   });
@@ -30,11 +30,9 @@ function allocatePort() {
   var randPort =  Math.floor(Math.random() * (max - min)) + min;
  const rawData = fs.readFileSync(SETTINGSPATH)
   let portsInUse = JSON.parse(rawData).portsInUse;
-  console.log(portsInUse)
   if (portsInUse.length >= max - min) {
     console.log("All ports are being used")
     throw new Error("All ports are being used");
-    return
   }
   while (portsInUse.includes(randPort)) {
     randPort = Math.floor(Math.random() * (max - min)) + min;
@@ -75,3 +73,4 @@ function deallocatePorts(port) {
 
 module.exports.allocatePort = allocatePort;
 module.exports.start = start;
+module.exports.deallocatePorts = deallocatePorts;
