@@ -7,7 +7,7 @@ export default {
   },
   computed: {
     shouldShowNav() {
-      return !(this.$route.name === null || this.$route.name === 'login' || this.$route.name === 'register');
+      return !(this.$route.name === null || this.$route.name === 'login' || this.$route.name === 'logout' || this.$route.name === 'register');
     }
   }
 }

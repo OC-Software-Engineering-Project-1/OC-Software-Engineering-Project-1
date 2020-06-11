@@ -4,42 +4,50 @@ import Home from "../views/home/home.vue";
 import Games from "../views/games/games.vue";
 import GameLobbies from "../views/game-lobbies/game-lobbies.vue";
 import Game from "../views/game/game.vue";
+import About from "../views/about/about.vue";
+import Account from "../views/account/account.vue";
+import Community from "../views/community/community.vue";
 
 
 Vue.use(VueRouter);
 const routes = [
     {
-        path: "/home",
-        name: "home",
-        component: Home,
-        meta: {
-            requiresAuth: true
-          }
+      path: "/home",
+      name: "home",
+      component: Home,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
-        path: "/games",
-        name: "games",
-        component: Games,
-        meta: {
-            requiresAuth: true
-        }
+      path: "/games",
+      name: "games",
+      component: Games,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
-        path: "/gamelobbies",
-        name: "gamelobbies",
-        component: GameLobbies,
-        meta: {
-            requiresAuth: true
-          }
+      path: "/gamelobbies",
+      name: "gamelobbies",
+      component: GameLobbies,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
-        path: "/game",
-        name: "game",
-        component: Game,
-        props: true,
-        meta: {
-            requiresAuth: true
-          }
+      path: "/game",
+      name: "game",
+      component: Game,
+      props: true,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/",
+      name: "login",
+      component: () => import("../views/login/login.vue")
     },
     {
       path: "/logout",
@@ -49,16 +57,40 @@ const routes = [
         requiresAuth: true
     }
   },
-    {
-        path: "/",
-        name: "login",
-        component: () => import("../views/login/login.vue")
-    },
-    {
-        path: "/register",
-        name: "register",
-        component: () => import("../views/register/register.vue")
+  {
+      path: "/",
+      name: "login",
+      component: () => import("../views/login/login.vue")
+  },
+  {
+    path: "/about",
+    name: "about",
+    component: About,
+    meta: {
+      requiresAuth: true
     }
+  },
+  {
+    path: "/register",
+    name: "register",
+    component: () => import("../views/register/register.vue")
+  },
+  {
+    path: "/account",
+    name: "account",
+    component: Account,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: "/community",
+    name: "community",
+    component: Community,
+    meta: {
+      requiresAuth: true
+    }
+  },
 ];
 const router = new VueRouter({
     mode: "history",
