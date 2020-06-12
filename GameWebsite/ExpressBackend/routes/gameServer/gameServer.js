@@ -20,10 +20,10 @@ router.get('/gameServers', async function(req,res){
 });
 
 // get gameServer from the db by Id
-router.get('/gameServers/:id?', async function(req,res){
-  
+router.get('/gameServers/:id', async function(req,res){
+   const _id = req.params.id
    try{
-      const gameServer = await GameServer.find()[0]
+      const gameServer = await GameServer.findOne({_id})
       res.send(gameServer)
    }catch(e){
       res.status(400).send(e)
@@ -43,12 +43,13 @@ router.post('/gameServers',async function(req,res){
      }
 }); 
 // update gameServer in the db
-router.put('/gameServers/:id?',async function(req,res){
+router.put('/gameServers/:id',async function(req,res){
    const updates =  Object.keys(req.body)
+   const _id = req.params.id;
+
    try{
-      const gameServers = await GameServer.find()
-      const gameServer = gameServers[0]
-      const allowedUpdates = ['numberOfConnectedPlayers', 'availability']
+      const gameServer = await GameServer.findOne({_id})
+      const allowedUpdates = ['capacity', 'availability']
       const isValidOperation = updates.every((update)=>allowedUpdates.includes(update))
       if(!isValidOperation){
           return res.status(400).send({'Error':'Invalid Updates!'});
@@ -68,40 +69,41 @@ router.put('/gameServers/:id?',async function(req,res){
    }
 }); 
 //delete gameServer from the db
-router.delete('/gameServers/:id?',async function(req,res){
+router.delete('/gameServers/:id',async function(req,res){
+    const _id = req.params.id;
    try{
-      const gameServer = await GameServer.find()
+      const gameServer = await GameServer.findOne({_id})
       if(!gameServer){
          return res.status(404).send()
      }
-     gameServer[0].remove();
-      res.send(gameServer[0])
+     gameServer.remove();
+      res.send(gameServer)
    }catch(e){
       res.status(400).send(e)
    }
    
 }); 
 //join gameServer
-router.post('/gameServers/:id?/join', auth, async function(req, res){
+router.post('/gameServers/:id/join', auth, async function(req, res){
+    const _id = req.params.id;
     try{
         //console.log("Hello")
-        const gameServers = await GameServer.find()
-        if(!gameServers){
+        const gameServer = await GameServer.findOne({_id})
+        if(!gameServer){
             return res.status(404).send()
         }
-        const gameServer = gameServers[0]
-     
+            
         if(gameServer.players.includes(req.user.email)){
             return res.status(400).send({"Error":"Player already in game server"})
         }
-        if(gameServer.numberOfConnectedPlayers>=gameServer.capacity){
+        if(gameServer.players.length>=gameServer.capacity){
            return res.status(400).send({"Error":"Current gameServer's capacity has been reached"})
         }
 
         gameServer.players.push(req.user.email);
-        console.log(gameServer)  
+        // console.log(gameServer)  
         // gameServer.numberOfConnectedPlayers++;   
-        gameServer.numberOfConnectedPlayers = gameServer.players.length;   
+        //gameServer.numberOfConnectedPlayers = gameServer.players.length;   
         
         await gameServer.save();
         res.send(gameServer)
@@ -110,15 +112,15 @@ router.post('/gameServers/:id?/join', auth, async function(req, res){
     }
 })
 //Leave gameServer
-router.post('/gameServers/:id?/leave', auth, async function(req, res){
+router.post('/gameServers/:id/leave', auth, async function(req, res){
+    const _id = req.params.id;
     try{
         //console.log("Hello")
-        const gameServers = await GameServer.find()
-        if(!gameServers){
+        const gameServer = await GameServer.findOne({_id})
+        if(!gameServer){
             return res.status(404).send()
         }
       
-        const gameServer = gameServers[0]
         if(!gameServer.players.includes(req.user.email)){
             return res.status(404).send({"Error":"Player not found"})
         }
@@ -128,7 +130,7 @@ router.post('/gameServers/:id?/leave', auth, async function(req, res){
 
         gameServer.players= gameServer.players.filter((player)=> { return req.user.email.toString()!==player.toString()});
       
-        gameServer.numberOfConnectedPlayers = gameServer.players.length;   
+        // gameServer.numberOfConnectedPlayers = gameServer.players.length;   
         
         await gameServer.save();
         res.send(gameServer)

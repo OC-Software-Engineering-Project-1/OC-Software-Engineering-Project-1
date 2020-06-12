@@ -1,7 +1,24 @@
+import VueJwtDecode from "vue-jwt-decode";
 export default {
     name: 'GameLobbies',
     props: {
         gameTitle: String
+    },
+    methods:{
+        getUserDetails() {
+            let token = localStorage.getItem("jwt");
+            let decoded = VueJwtDecode.decode(token);
+            this.user = decoded;
+            if (localStorage.getItem("jwt")==""){
+                this.$router.push("/")
+                alert("Need to be authenticated")
+            }
+
+
+        }
+    },
+    created() {
+        this.getUserDetails(); // need this in other pages
     },
     data() {
         return {

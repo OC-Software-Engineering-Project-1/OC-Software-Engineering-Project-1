@@ -7,13 +7,14 @@ export default {
             links: [
                 {
                     id: 0,
-                    text: 'Home',
+                    text: 'GameWebsite',
                     page:'/home'
                 },
+                
                 {
                     id: 1,
-                    text: 'Games',
-                    page:'/games'
+                    text: 'Community',
+                    page:'/community'
                 },
                 {
                     id: 2,
@@ -22,10 +23,41 @@ export default {
                 },
                 {
                     id: 3,
-                    text: 'Logout',
-                    page:'/logout'
+                    text: 'Games',
+                    page:'/games'
                 },
+            ],
+            dropdownLinks: [
+                {
+                    id: 0,
+                    text: 'Account',
+                    page: '/account'
+                },
+                {
+                    id: 1,
+                    text: 'Sign Out',
+                    page: '/logout'
+                }
             ]
         }
+    },
+    methods: {
+        showList() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        },
+        documentClick(e) {
+            if (!e.target.matches('.dropbtn')) {
+                var myDropdown = document.getElementById("myDropdown");
+                if (myDropdown.classList.contains('show')) {
+                    myDropdown.classList.remove('show');
+                }
+            }
+        } 
+    },
+    created () {
+        document.addEventListener('click', this.documentClick)
+    },
+    destroyed () {  
+        document.removeEventListener('click', this.documentClick)
     }
 }

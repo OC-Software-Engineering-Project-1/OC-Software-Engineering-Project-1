@@ -1,32 +1,122 @@
 .navbar {
-    overflow: hidden;
-    background-color: #0041a8;
-    padding: 0;
-    display: block;
+  background-color: #033076;
+  padding: 0;
+  display: block;
+  z-index: 999;
+  box-shadow: 0px 2px 2px 2px rgba(0,0,0,0.4);
+  margin-bottom: 8px;
 }
 
-.last {
-  float:right !important;
-  border-right: none !important;
+.first {
+  float: left !important;
+  background-color: #f9f9f9;
+  color: #033076 !important;
+  padding: 14px 30px !important;
+  font-family: "Abril Fatface";
+  font-weight: bold;
 }
+
+.first.router-link-active {
+  color: #f9f9f9 !important;
+} 
 
 .navbar a {
-    float: left;
+    float: right;
     color: #f2f2f2;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 25px;
-    /* border-right: 1px solid #bbb; */
 }
 
 .navbar a:hover:not(.router-link-active) {
   background-color: #34d2eb;
-  color: #FFFFFF;
+  color: #f9f9f9;
   transition: all 0.25s;
 }
 
 .router-link-active {
-  background-color: #e4b303;
+  background-color: #ffa834;
   transition: all 0.25s;
+}
+
+.dropdown {
+  float: right;
+  margin-right: 5%;
+}
+
+.dropdown .dropbtn {
+  cursor: pointer;
+  font-size: 25px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropbtn, .dropbtn:hover, .dropbtn:focus {
+  background-color: #34d2eb;
+}
+
+.dropdown-content {
+  overflow: visible !important;
+  display: none;
+  position: absolute;
+  right: 5%;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 2px rgba(0,0,0,0.8);
+  border: 0px solid #f9f9f9;
+  border-radius: 25px;
+  margin-top: 5px;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-size: 20px;
+}
+
+.dropdown-content a:hover {
+  background-color: #020202 !important;
+  transition: all 0.33s !important;
+}
+
+.firstLink {
+  border: 2px solid #f9f9f9;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+}
+
+.lastLink {
+  border: 2px solid #f9f9f9;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+.show {
+  display: block;
+  overflow: visible !important;
+  z-index: 999 !important;
+}
+
+.clearfix:before, .clearfix:after {
+    content: ".";    
+    display: block;    
+    height: 0;    
+    overflow: hidden; 
+}
+.clearfix:after { 
+  clear: both; 
+}
+
+.clearfix { 
+  zoom: 1; 
 }
