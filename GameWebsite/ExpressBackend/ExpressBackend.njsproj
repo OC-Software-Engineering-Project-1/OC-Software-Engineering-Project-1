@@ -62,6 +62,9 @@
     <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
     <Content Include="routes\friendRequest\friendRequest.js" />
+    <Content Include="routes\gameServer\gameServer.js" />
+    <Content Include="routes\gameServer\settings.json" />
+    <Content Include="routes\gameServer\startServer.js" />
     <Content Include="routes\GameSession\gameSession.js" />
     <Content Include="routes\game\game.js" />
     <Content Include="routes\Group\group.js" />
@@ -83,6 +86,7 @@
     <Folder Include="public\stylesheets\" />
     <Folder Include="routes\" />
     <Folder Include="routes\friendRequest\" />
+    <Folder Include="routes\gameServer\" />
     <Folder Include="routes\GameSession\" />
     <Folder Include="routes\game\" />
     <Folder Include="routes\Group\" />

@@ -3,6 +3,7 @@
     <h1>Empty Game</h1>
         <h1>{{ gameTitle }}</h1>
         <p>Empty Game was voted most exhilarating game of 2020! There are no rules! Good luck!</p>
+        <button onclick="this.createLobby">Create New Lobby</button>
         <ul id="lobbyList" style="list-style: none;">
             <li v-for="(lobby, index) in lobbyList" :key="index">
                 <div>

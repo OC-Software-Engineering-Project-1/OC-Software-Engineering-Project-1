@@ -32,7 +32,7 @@ router.get('/gameServers/:id?', async function(req,res){
    }
 });
 
-//add a new gameServers  to the db
+//add a new gameServer to the db
 router.post('/gameServers',async function(req,res){
     
     try{
