@@ -1,5 +1,5 @@
 var io = require("socket.io")(
-  process.env.PORT || parseInt(process.argv[2]) || 200
+  process.env.PORT || parseInt(process.argv[2]) || 52300
 );
 
 //Custom Classes
@@ -39,12 +39,18 @@ io.on("connection", function (socket) {
   if (playerCount == 1) {
     console.log("BOARD GENERATE");
     socket.emit("sendBoard", { id: thisPlayerID });
+  } else {
+    socket.emit("getBoard", { board: board });
   }
 
   socket.on("sendBoard", function (data) {
     console.log("sendBoard Recieved");
     console.log(data.board);
-    this.board = data.board;
+
+    for (var i = 0; i < 24; i++) {
+      board.push(data.board[i]);
+    }
+    console.log(board);
   });
 
   socket.on("getBoard", function (data) {
