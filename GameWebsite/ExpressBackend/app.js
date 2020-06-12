@@ -102,7 +102,8 @@ const exitHandler = async ()=>{
       });
       fs.writeFileSync(SETTINGSPATH, data);
       await GameServer.deleteMany({})   //Empty gameserver Table
-      console.log("after delete")  
+      console.log("after delete") ; 
+      process.exit();
 
 }
 //https://stackoverflow.com/questions/14031763/doing-a-cleanup-action-just-before-node-js-exits
