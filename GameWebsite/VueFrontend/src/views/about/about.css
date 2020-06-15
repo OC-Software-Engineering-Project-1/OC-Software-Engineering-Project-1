@@ -1,0 +1,25 @@
+.aboutContent {
+    background-color: #ebebeb;
+    height: calc(100vh - 65.5px);
+    min-height: 500px;
+    font-family: 'Alata',sans-serif;
+    color: #606060;
+}
+
+.header {
+    margin: 0px 8%;
+    padding: 1.2% 0px;
+    font-size: 24px;
+    font-stretch: 100%;
+    font-weight: 750;
+}
+
+.innerContent {
+    width: 85%;
+    height: 75%;
+    position: relative;
+    left: 7.5%;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    min-height: 300px;
+}
