@@ -9,7 +9,6 @@
                     <h3>Host: {{ lobby.hostUser }}</h3>
                     <h3>Seats Available: ({{ lobby.players.length }}/{{ lobby.capacity }})</h3>
                     <button v-on:click="joinLobby(lobby)">Join Server</button>
-                    <router-link :to="{ name: 'game', params: { lobby: lobby }}" tag="button">Join</router-link>
                 </div>
             </li>
         </ul>
