@@ -66,7 +66,8 @@ const UserSchema = new mongoose.Schema(
       required:true
     },
     avatar:{
-      type:Buffer
+      type:String,
+      required:false
     },
     tokens: [
       {
@@ -121,8 +122,8 @@ UserSchema.methods.generateAuthToken=async function(){
 UserSchema.methods.toJSON = function(){
     const  userObjects= this.toObject()
     delete userObjects.password
-    delete userObjects.tokens
-    delete userObjects.avatar
+    //delete userObjects.tokens
+    //delete userObjects.avatar
     return userObjects
 }
 
