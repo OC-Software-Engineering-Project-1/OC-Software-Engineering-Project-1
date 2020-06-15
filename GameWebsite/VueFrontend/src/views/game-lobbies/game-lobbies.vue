@@ -114,9 +114,7 @@
                             </ul>
                             <button class="orangeBtn start">Start!</button>
                         </div>
-                    </div>
-
-                    
+                    </div>   
                 </b-tab>
             </b-tabs>
         </div>
