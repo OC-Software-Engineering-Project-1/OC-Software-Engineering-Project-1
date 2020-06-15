@@ -2,6 +2,7 @@ import Vue from "vue";
 import App from "./app/app.vue";
 import router from "./router";
 import axios from "axios";
+import '../fa.config';
 import "bootstrap/dist/css/bootstrap.css";
 
 

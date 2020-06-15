@@ -7,22 +7,16 @@ export default {
             links: [
                 {
                     id: 0,
-                    text: 'GameWebsite',
-                    page:'/home'
-                },
-                
-                {
-                    id: 1,
                     text: 'Community',
                     page:'/community'
                 },
                 {
-                    id: 2,
+                    id: 1,
                     text: 'About',
                     page: '/about'
                 },
                 {
-                    id: 3,
+                    id: 2,
                     text: 'Games',
                     page:'/games'
                 },
@@ -31,12 +25,14 @@ export default {
                 {
                     id: 0,
                     text: 'Account',
-                    page: '/account'
+                    page: '/account',
+                    icon: 'user'
                 },
                 {
                     id: 1,
                     text: 'Sign Out',
-                    page: '/logout'
+                    page: '/logout',
+                    icon: 'sign-out-alt'
                 }
             ]
         }
@@ -46,7 +42,7 @@ export default {
             document.getElementById("myDropdown").classList.toggle("show");
         },
         documentClick(e) {
-            if (!e.target.matches('.dropbtn')) {
+            if (!e.target.matches('.profileBorder') && !e.target.matches('.profilePic')) {
                 var myDropdown = document.getElementById("myDropdown");
                 if (myDropdown.classList.contains('show')) {
                     myDropdown.classList.remove('show');

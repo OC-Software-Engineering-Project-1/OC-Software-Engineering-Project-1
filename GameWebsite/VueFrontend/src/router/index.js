@@ -8,53 +8,52 @@ import About from "../views/about/about.vue";
 import Account from "../views/account/account.vue";
 import Community from "../views/community/community.vue";
 
-
 Vue.use(VueRouter);
 const routes = [
-    {
-      path: "/home",
-      name: "home",
-      component: Home,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: "/games",
-      name: "games",
-      component: Games,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: "/gamelobbies",
-      name: "gamelobbies",
-      component: GameLobbies,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: "/game",
-      name: "game",
-      component: Game,
-      props: true,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: "/",
-      name: "login",
-      component: () => import("../views/login/login.vue")
-    },
-    {
-      path: "/logout",
-      name: "logout",
-      component: () => import("../views/logout/logout.vue"),
-      meta: {
-        requiresAuth: true
+  {
+    path: "/home",
+    name: "home",
+    component: Home,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: "/games",
+    name: "games",
+    component: Games,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: "/gamelobbies",
+    name: "gamelobbies",
+    component: GameLobbies,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: "/game",
+    name: "game",
+    component: Game,
+    props: true,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: "/",
+    name: "login",
+    component: () => import("../views/login/login.vue")
+  },
+  {
+    path: "/logout",
+    name: "logout",
+    component: () => import("../views/logout/logout.vue"),
+    meta: {
+      requiresAuth: true
     }
   },
   {
