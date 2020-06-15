@@ -77,6 +77,7 @@
     margin-top: 10%;
     margin-left: -20%;
     border-bottom: none;
+    
 }
 
 .tabContent {
@@ -85,25 +86,22 @@
     /* margin-right: 10%; */
     border: none;
     padding: 0px;
-}
-
-.nav-tabs {
-    border-bottom: none;
-    text-decoration: none;
+    overflow:auto;
 }
 
 .criteria {
     float: left;
     width: 40%;
     margin-left: 10%;
-    margin-bottom: 20px;
+    margin: 20px;
+    align-items: center;
 }
 
 .lobby {
 
-    padding-top: 5px;
+    padding: 5px;
     clear:both;
-    height: 100px;
+    height: 120px;
     border: white;
     border-top: lightgrey;
     border-width: 2px;
@@ -121,11 +119,17 @@
 
 }
 
+#lobbyList {
+    list-style: none;
+    padding: 0px;
+}
+
 .profilePic {
     border-radius: 50%;
     height: 75px;
     width: 75px;
     float: left;
+    margin-left: 20px;
     
 }
 
@@ -134,8 +138,45 @@ h4 {
     color:black;
 }
 
-.joinButton {
+a {
+    color: white;
+}
+
+.join {
     float: right;
+}
+
+.nav-tabs .nav-link {
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: none;
+    text-decoration: none;
+}
+
+.orangeBtn {
+    background-color: #ffa834; 
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.center{
+    margin: auto;
+    width: 70%;
+    padding: 10px;
+}
+
+#dropdown-1 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.start {
+    margin-left: 45%;
 }
 
 
