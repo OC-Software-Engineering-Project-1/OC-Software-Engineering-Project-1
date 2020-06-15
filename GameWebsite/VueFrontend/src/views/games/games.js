@@ -22,7 +22,6 @@ export default {
                 alert("Need to be authenticated")
             }
 
-
         },
         
     },

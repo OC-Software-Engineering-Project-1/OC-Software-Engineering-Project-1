@@ -5,6 +5,7 @@
     <Name>VueFrontend</Name>
     <RootNamespace>VueFrontend</RootNamespace>
     <SaveNodeJsSettingsInProjectFile>True</SaveNodeJsSettingsInProjectFile>
+    <DebuggerPort>9222</DebuggerPort>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -33,6 +34,19 @@
     <Content Include="package-lock.json" />
     <Content Include="public\favicon.ico" />
     <Content Include="public\index.html" />
+    <Content Include="src\components\auth\logout\logout.js" />
+    <Content Include="src\components\auth\logout\logout.vue" />
+    <Content Include="src\components\auth\MailAuth\Create.js" />
+    <Content Include="src\components\auth\MailAuth\Create.vue" />
+    <Content Include="src\components\auth\MailAuth\index.js" />
+    <Content Include="src\components\auth\MailAuth\router.js" />
+    <Content Include="src\components\auth\MailAuth\socialAuthentication\app.js" />
+    <Content Include="src\components\auth\MailAuth\socialAuthentication\auth\facebook.js" />
+    <Content Include="src\components\auth\MailAuth\socialAuthentication\auth\google.js" />
+    <Content Include="src\components\auth\MailAuth\socialAuthentication\models\user.js" />
+    <Content Include="src\components\auth\MailAuth\socialAuthentication\routes\auth.js" />
+    <Content Include="src\components\auth\MailAuth\socialAuthentication\routes\users.js" />
+    <Content Include="src\components\auth\MailAuth\user.router.js" />
     <Content Include="src\services\api.js">
       <SubType>Code</SubType>
     </Content>
@@ -63,6 +77,9 @@
     <Content Include="src\components\navigation\navigation.js" />
     <Content Include="src\components\navigation\navigation.vue" />
     <Content Include="src\router\index.js" />
+    <Content Include="src\views\about\about.vue" />
+    <Content Include="src\views\account\account.vue" />
+    <Content Include="src\views\community\community.vue" />
     <Content Include="src\views\game-lobbies\game-lobbies.js">
       <SubType>Code</SubType>
     </Content>
@@ -93,6 +110,8 @@
     <Content Include="src\views\login\login.vue">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="src\views\logout\logout.js" />
+    <Content Include="src\views\logout\logout.vue" />
     <Content Include="src\views\register\register.js">
       <SubType>Code</SubType>
     </Content>
@@ -104,6 +123,12 @@
     <Folder Include="dist\" />
     <Folder Include="public\" />
     <Folder Include="src\" />
+    <Folder Include="src\components\auth\logout\" />
+    <Folder Include="src\components\auth\MailAuth\" />
+    <Folder Include="src\components\auth\MailAuth\socialAuthentication\" />
+    <Folder Include="src\components\auth\MailAuth\socialAuthentication\auth\" />
+    <Folder Include="src\components\auth\MailAuth\socialAuthentication\models\" />
+    <Folder Include="src\components\auth\MailAuth\socialAuthentication\routes\" />
     <Folder Include="src\services\" />
     <Folder Include="src\components\" />
     <Folder Include="src\components\auth\" />
@@ -113,11 +138,15 @@
     <Folder Include="src\components\navigation\" />
     <Folder Include="src\router\" />
     <Folder Include="src\views\" />
+    <Folder Include="src\views\about\" />
+    <Folder Include="src\views\account\" />
+    <Folder Include="src\views\community\" />
     <Folder Include="src\views\games\" />
     <Folder Include="src\views\game\" />
     <Folder Include="src\views\game-lobbies\" />
     <Folder Include="src\views\home\" />
     <Folder Include="src\views\login\" />
+    <Folder Include="src\views\logout\" />
     <Folder Include="src\views\register\" />
   </ItemGroup>
   <ItemGroup>
