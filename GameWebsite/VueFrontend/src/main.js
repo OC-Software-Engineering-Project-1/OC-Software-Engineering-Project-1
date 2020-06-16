@@ -3,6 +3,7 @@ import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 import App from "./app/app.vue";
 import router from "./router";
 import axios from "axios";
+import '../fa.config';
 
 Vue.use(BootstrapVue);
 
