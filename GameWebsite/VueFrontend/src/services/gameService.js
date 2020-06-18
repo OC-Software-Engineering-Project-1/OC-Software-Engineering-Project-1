@@ -4,6 +4,9 @@ export default {
     getGameList() {
         return Api().get('/games')
     },
+    getGame(name) {
+        return Api().get('/games/' + name)
+    },
     getGameLobbies() {
         return Api().get('/gameServers')
     },

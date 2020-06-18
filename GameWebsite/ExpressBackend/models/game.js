@@ -9,6 +9,14 @@ const GameSchema = new mongoose.Schema({
         required:true,
         trim:true
     },
+    description1: {
+        type: String,
+        trim: true
+    },
+    description2: {
+        type: String,
+        trim: true
+    },
     port:{
         type:Number,
         required:true

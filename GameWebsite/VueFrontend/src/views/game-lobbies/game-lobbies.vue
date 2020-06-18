@@ -3,10 +3,10 @@
         <div class="left">
             <!-- <img class="gameImage" src="http://localhost:3000/empty_game/ReferencePic.PNG" alt="Game Image"> -->
         </div>
-        <h1 class="gameTitle right">The Game of Life</h1>
+        <h1 class="gameTitle right">{{ gameTitle }}</h1>
         <div class="background">
         <div class="left">
-            <img class="gameImage" src="https://i.ytimg.com/vi/dhAZZPIqvQg/maxresdefault.jpg" alt="Game Image">
+            <img class="gameImage" :src="gameImage" alt="Game Image">
             <div class="gameInfo">
                 <p><svg class="bi bi-people-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
@@ -16,20 +16,13 @@
                     <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
                 </svg> 1 - 2 hours</p>
                 <p>Designer</p>
-                <p>&emsp;Bill Markham</p>
+                <p>&emsp;Mr. Empty</p>
             </div>
         </div>
         <div class="right">
             <div class="description">
-                <p>Attend college, accept a job and play minigames in this interactive app that is fun for the whole family. 
-                Watch as board piece characters come to life and make their way through the various stages of life on this spectacular, 
-                3D animated reworking of the familiar physical board. Showcases a beautifully rendered digital game board, 
-                cards <b-collapse id="collapse-1" class="mt-2"> and spinner that capture the fun of the Classic game full of adventure and
-                surprises! THE GAME OF LIFE will take players on a journey where fortunes can be won…and lost! 
-                Choose a college or career path and start down the many roads of life, make money, buy a house or start a family 
-                -- will you take the safe route or the risky road? The choice is yours as you navigate life’s rich tapestry! 
-                Do whatever it takes to retire in style with the most wealth at the end of the game to win!</b-collapse></p>
-                <b-button v-b-toggle.collapse-1 variant="primary" class="readMore">Read More</b-button>
+                <p>{{ gameDescription1 }}<b-collapse id="collapse-1" class="mt-2">{{ gameDescription2 }} </b-collapse></p>
+                <b-button ref="collapseButton" v-b-toggle.collapse-1 variant="primary" class="readMore">Read More</b-button>
             </div>
             <b-tabs class="tabs"> 
                 <b-tab class="tabContent" title="Join" active>
@@ -54,15 +47,15 @@
                                 <img class="profilePic lobbyItem" src="http://placehold.it/400x200" alt="Game Image">
                                 <div class="lobbyItem">
                                     <h4>Host</h4>
-                                    <p>{{ lobby.host }}</p>
+                                    <p>{{ lobby.hostUser }}</p>
                                 </div>
                                 <div class="lobbyItem">
                                     <h4>Looking for Players</h4>
-                                    <p>({{ lobby.occupancy }}/{{ lobby.capacity }})</p>
+                                    <p>({{ lobby.players.length }}/{{ lobby.capacity }})</p>
                                 </div>
                                 <div class="lobbyItem join">
-                                    <p>Started 20 min ago</p>
-                                    <router-link :to="{ name: 'game', params: { lobby: lobby }}" tag="button" class="orangeBtn">Join</router-link>
+                                    <!--<p>Started 20 min ago</p>-->
+                                    <button class="orangeBtn" v-on:click="joinLobby(lobby)">Join</button>
                                 </div>
                             </div>
                         </li>
@@ -104,7 +97,7 @@
                                         <img class="profilePic lobbyItem" src="http://placehold.it/400x200" alt="Game Image">
                                         <div class="lobbyItem">
                                             <h4>Username</h4>
-                                            <p>{{ lobby.host }}</p>
+                                            <p>{{ lobby.hostUser }}</p>
                                         </div>
                                         <div class="lobbyItem join">
                                             <button class="orangeBtn">Remove</button>
@@ -112,7 +105,7 @@
                                     </div>
                                 </li>
                             </ul>
-                            <button class="orangeBtn start">Start!</button>
+                            <button v-on:click="createLobby" class="orangeBtn start">Start!</button>
                         </div>
                     </div>   
                 </b-tab>
