@@ -1,0 +1,125 @@
+.accountContent {
+    background-color: #ebebeb;
+    height: calc(100vh - 65.5px);
+    min-height: 500px;
+    font-family: 'Alata',sans-serif;
+    color: #606060;
+}
+
+.header {
+    margin: 0px 8%;
+    padding: 1.2% 0px;
+    font-size: 24px;
+    font-stretch: 100%;
+    font-weight: 750;
+}
+
+.boldText {
+    font-weight: 700;
+}
+
+.largeText {
+    font-size: 17px;
+}
+
+.largerText {
+    font-size: 18px;
+}
+
+.largestText {
+    font-size: 22px;
+}
+
+.innerContent {
+    width: 85%;
+    height: 75%;
+    position: relative;
+    left: 7.5%;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    min-height: 300px;
+}
+
+.userProfileContent {
+    display: flex;
+    align-items: center;
+}
+
+.userProfileContent > div {
+    display: inline-block;
+}
+
+.emailContent {
+    position: relative;
+}
+
+.emailContent > div {
+    display: inline-block;
+}
+
+.container {
+    height: 170px;
+    width: 170px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.changePicButton {
+    background-color: rgb(202, 202, 202);
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    height: 110px;
+    width: 110px;
+    padding: 0px;
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(27%, -128%);
+    -ms-transform: translate(27%, -128%);
+}
+
+.changePicButton:hover {
+    background-color: black;
+    opacity: 0.75;
+    transition: opacity 0.5s;
+}
+
+.profilePic {
+    border-radius: 50%;
+    height: 110px;
+    width: 110px;
+    margin: 30px 15px 30px 30px;
+}
+
+.userTextContent {
+    width: 100%;
+}
+
+.changeEmailButton {
+    position: absolute;
+    right: 4%;
+    border: 0px;
+    background-color: #ffffff;
+    opacity: 0.5;
+}
+
+.changeEmailButton:hover {
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.userStatsContent > div {
+    margin-left: 45px;
+}
+
+.userActualStats > div > div {
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+hr {
+    margin: 16px 35px;
+    border-top: 2px solid rgba(94, 94, 94, 0.6);
+}
