@@ -47,7 +47,7 @@ router.put('/games/:id',async function(req,res){
    const updates =  Object.keys(req.body)
    try{
       const game = await Game.findOne({_id})
-      const allowedUpdates = ['location','frequency', 'name']
+      const allowedUpdates = ['port','frequency', 'name']
       const isValidOperation = updates.every((update)=>allowedUpdates.includes(update))
       if(!isValidOperation){
           return res.status(400).send({'Error':'Invalid Updates!'});
