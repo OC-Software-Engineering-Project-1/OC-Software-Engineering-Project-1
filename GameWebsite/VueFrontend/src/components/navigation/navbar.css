@@ -4,16 +4,17 @@
   display: block;
   z-index: 999;
   box-shadow: 0px 2px 2px 2px rgba(0,0,0,0.4);
-  margin-bottom: 8px;
+  /* margin-bottom: 8px; */
 }
 
 .first {
-  float: left !important;
+  float: left;
   background-color: #f9f9f9;
-  color: #033076 !important;
-  padding: 14px 30px !important;
+  color: #033076;
+  padding: 14px 30px;
   font-family: "Abril Fatface";
   font-weight: bold;
+  font-size: 25px;
 }
 
 .first.router-link-active {
@@ -21,12 +22,12 @@
 } 
 
 .navbar a {
-    float: right;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 25px;
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 25px;
 }
 
 .navbar a:hover:not(.router-link-active) {
@@ -35,7 +36,7 @@
   transition: all 0.25s;
 }
 
-.router-link-active {
+.router-link-active:not(.firstLink):not(.lastLink):not(.otherLink) {
   background-color: #ffa834;
   transition: all 0.25s;
 }
@@ -46,7 +47,6 @@
 }
 
 .dropdown .dropbtn {
-  cursor: pointer;
   font-size: 25px;  
   border: none;
   outline: none;
@@ -58,14 +58,16 @@
 }
 
 .dropbtn, .dropbtn:hover, .dropbtn:focus {
-  background-color: #34d2eb;
+  /* background-color: #34d2eb; */
+  max-height: 65.5px;
 }
 
 .dropdown-content {
   overflow: visible !important;
   display: none;
   position: absolute;
-  right: 5%;
+  right: 15%;
+  top: 135%;
   background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 2px rgba(0,0,0,0.8);
@@ -86,6 +88,7 @@
 
 .dropdown-content a:hover {
   background-color: #020202 !important;
+  color: #f9f9f9;
   transition: all 0.33s !important;
 }
 
@@ -119,4 +122,26 @@
 
 .clearfix { 
   zoom: 1; 
+}
+
+.icon {
+  margin-right: 7px;
+}
+
+.profileBorder {
+  border: 2px solid #ffa834;
+  border-radius: 50%;
+  position: relative;
+  top: -5px;
+}
+
+.profileBorder:hover {
+  border: 2px solid #34d2eb;
+}
+
+.profilePic {
+  cursor: pointer;
+  border-radius: 50%;
+  height: 75px;
+  width: 75px;
 }

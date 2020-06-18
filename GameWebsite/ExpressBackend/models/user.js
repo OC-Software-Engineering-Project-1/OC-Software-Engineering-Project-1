@@ -65,6 +65,9 @@ const UserSchema = new mongoose.Schema(
       default:false,
       required:true
     },
+    avatar:{
+      type:Buffer
+    },
     tokens: [
       {
         token: {
