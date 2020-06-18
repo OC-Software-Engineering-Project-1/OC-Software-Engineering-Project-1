@@ -41,6 +41,7 @@ router.post('/games', async function (req, res) {
         res.status(400).send(e)
     }
 });
+
 // update game in the db
 router.put('/games/:id', async function (req, res) {
     const _id = req.params.id
@@ -66,6 +67,7 @@ router.put('/games/:id', async function (req, res) {
         res.status(400).send(e)
     }
 });
+
 //delete game from the db
 router.delete('/games/:id', async function (req, res) {
     const _id = req.params.id
