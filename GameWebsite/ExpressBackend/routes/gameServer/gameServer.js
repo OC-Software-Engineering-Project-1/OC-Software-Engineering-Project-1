@@ -44,9 +44,9 @@ router.post('/gameServers', async function (req, res) {
         req.body["port"] = port;
         req.body["players"] = req.body["hostUser"]
         const gameServer = new GameServer(req.body)
-        console.log(req.body)
         await gameServer.save()
 
+        console.log(req.body)
         res.status(201).send(gameServer)
     } catch (e) {
         console.log(e.message)
