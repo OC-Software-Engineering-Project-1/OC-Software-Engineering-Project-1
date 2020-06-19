@@ -1,6 +1,7 @@
 export default {
     name: 'Game',
     props: {
-        lobby: Object
+        lobby: Object,
+        gameURL: String
     }
 };
