@@ -17,7 +17,7 @@ const GameSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    port:{
+    locationUrl:{
         type:Number,
         required:true
     },

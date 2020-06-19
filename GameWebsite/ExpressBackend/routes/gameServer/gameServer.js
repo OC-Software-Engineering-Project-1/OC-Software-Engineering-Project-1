@@ -26,6 +26,9 @@ router.get('/gameServers/:id', async function (req, res) {
     const _id = req.params.id
     try {
         const gameServer = await GameServer.findOne({ _id })
+        if(!gameServer){
+            return res.status(404).send()
+        }
         res.send(gameServer)
     } catch (e) {
         res.status(400).send(e)

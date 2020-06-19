@@ -25,6 +25,9 @@ router.get('/admin/users/:id', auth,async function(req,res){
             return res.status(401).send({'Error':'This operation requires admin priviledges'});
         }
         const user = await User.findOne({_id}).populate('friendsList')
+        if (!user) {
+            res.status(404).send();
+          }
         if(user.avatar != undefined){
             user.avatar = "http://"+req.headers.host+"/static/avatars/"+user.avatar;
         }
@@ -38,6 +41,9 @@ router.get('/users/me', auth,async function(req,res){
     const _id = req.user._id
     try{
         const user = await User.findOne({_id}).populate('friendsList')
+        if (!user) {
+            res.status(404).send();
+          }
         if(user.avatar != undefined){
             user.avatar = "http://"+req.headers.host+"/static/avatars/"+user.avatar;
         }

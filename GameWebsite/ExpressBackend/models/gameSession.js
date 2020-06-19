@@ -13,7 +13,7 @@ const GameSessionSchema = new mongoose.Schema({
     // },
     winner:{//username
         type:String,
-        required:true,
+        required:false,
         ref:'User'
     },
     game:{
