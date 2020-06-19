@@ -41,6 +41,8 @@ app.use(cookieParser());
 //Don't change the followeing two lines
 app.use('/static',express.static(path.join(__dirname, 'public')));//used in getting user profile picture
 app.use('/EmptyGame', express.static(path.join(__dirname, 'game_server/games/EmptyGame')));
+app.use('/Kintzugi', express.static(path.join(__dirname, 'game_server/games/Kintzugi')));
+app.use('/Cryptogram', express.static(path.join(__dirname, 'game_server/games/Cryptogram')));
 app.use(userRouter);
 app.use(scoreRouter);
 app.use(gameRouter);
