@@ -8,7 +8,6 @@ import About from "../views/about/about.vue";
 import Account from "../views/account/account.vue";
 import Community from "../views/community/community.vue";
 
-
 Vue.use(VueRouter);
 const routes = [
     {
