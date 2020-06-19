@@ -79,6 +79,9 @@
     <Content Include="src\router\index.js" />
     <Content Include="src\views\about\about.vue" />
     <Content Include="src\views\account\account.vue" />
+    <Content Include="src\views\community\community.css">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\views\community\community.vue" />
     <Content Include="src\views\game-lobbies\game-lobbies.css" />
     <Content Include="src\views\game-lobbies\game-lobbies.js">
