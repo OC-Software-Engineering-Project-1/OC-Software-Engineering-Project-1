@@ -17,10 +17,6 @@ const GameSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    locationUrl:{
-        type:Number,
-        required:true
-    },
     frequency:{
         type:Number,
         required:true,
@@ -28,8 +24,6 @@ const GameSchema = new mongoose.Schema({
     }
     
 })
-
-
 
 const Game=mongoose.model('Game', GameSchema)
 module.exports= Game
