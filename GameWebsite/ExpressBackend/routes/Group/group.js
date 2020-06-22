@@ -20,6 +20,9 @@ router.get("/groups/:id", async function (req, res) {
   const _id = req.params.id;
   try {
     const group = await Group.findOne({ _id });
+    if (!group) {
+      res.status(404).send();
+    }
     res.send(group);
   } catch (e) {
     res.status(400).send(e);

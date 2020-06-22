@@ -9,9 +9,13 @@ const GameSchema = new mongoose.Schema({
         required:true,
         trim:true
     },
-    port:{
-        type:Number,
-        required:true
+    description1: {
+        type: String,
+        trim: true
+    },
+    description2: {
+        type: String,
+        trim: true
     },
     frequency:{
         type:Number,
@@ -20,8 +24,6 @@ const GameSchema = new mongoose.Schema({
     }
     
 })
-
-
 
 const Game=mongoose.model('Game', GameSchema)
 module.exports= Game
