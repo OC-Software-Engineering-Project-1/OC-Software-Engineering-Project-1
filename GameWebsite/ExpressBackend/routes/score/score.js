@@ -22,6 +22,9 @@ router.get('/scores/:id',async function(req,res){
    const _id = req.params.id
    try{
       const score = await Score.findOne({_id})
+      if (!score) {
+         res.status(404).send();
+       }
       res.send(score)
    }catch(e){
       res.status(400).send(e)

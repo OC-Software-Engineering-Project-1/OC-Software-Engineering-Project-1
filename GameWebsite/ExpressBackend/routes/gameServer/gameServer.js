@@ -26,6 +26,9 @@ router.get('/gameServers/:id', async function (req, res) {
     const _id = req.params.id
     try {
         const gameServer = await GameServer.findOne({ _id })
+        if(!gameServer){
+            return res.status(404).send()
+        }
         res.send(gameServer)
     } catch (e) {
         res.status(400).send(e)
@@ -41,9 +44,9 @@ router.post('/gameServers', async function (req, res) {
         req.body["port"] = port;
         req.body["players"] = req.body["hostUser"]
         const gameServer = new GameServer(req.body)
-        console.log(req.body)
         await gameServer.save()
 
+        console.log(req.body)
         res.status(201).send(gameServer)
     } catch (e) {
         console.log(e.message)
