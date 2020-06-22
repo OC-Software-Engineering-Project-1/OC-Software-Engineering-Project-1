@@ -39,7 +39,7 @@
                         </b-dropdown>
                     </div>
                     </div>
-                    <ul id="lobbyList">
+                    <ul v-if="lobbyList.length > 0" id="lobbyList">
                         
                         <li v-for="(lobby, index) in lobbyList" :key="index">
                             
@@ -60,6 +60,7 @@
                             </div>
                         </li>
                     </ul>
+                    <p v-else class="message">No games available</p>
                 </b-tab>
                 <b-tab title="Create" class="tabLink">
                     <div class="tabContent">
@@ -90,7 +91,7 @@
                         <h4 class="criteria">Invite Friends</h4>
                         <div class="center">
                             <b-form-input v-model="text" placeholder="Search..."></b-form-input>
-                            <ul id="lobbyList">
+                            <ul v-if="lobbyList.length > 0" id="lobbyList">
                                 <li v-for="(lobby, index) in lobbyList" :key="index">
                                     
                                     <div class="lobby">
@@ -105,6 +106,7 @@
                                     </div>
                                 </li>
                             </ul>
+                            <p v-else class="message">No players added</p>
                             <button v-on:click="createLobby" class="orangeBtn start">Start!</button>
                         </div>
                     </div>   
@@ -119,4 +121,4 @@
 
 <style src="bootstrap/dist/css/bootstrap.css"></style>
 <style src="bootstrap-vue/dist/bootstrap-vue.css"></style>
-<style scoped src="./game-lobbies.css"></style>
+<style src="./game-lobbies.css"></style>
