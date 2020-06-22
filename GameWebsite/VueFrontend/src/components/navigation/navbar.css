@@ -1,10 +1,16 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
 .navbar {
   background-color: #033076;
   padding: 0;
   display: block;
-  z-index: 999;
   box-shadow: 0px 2px 2px 2px rgba(0,0,0,0.4);
-  /* margin-bottom: 8px; */
+  min-height: 65.5px;
+  width: 100%;
+  min-width: 933px;
 }
 
 .first {
@@ -58,7 +64,6 @@
 }
 
 .dropbtn, .dropbtn:hover, .dropbtn:focus {
-  /* background-color: #34d2eb; */
   max-height: 65.5px;
 }
 
