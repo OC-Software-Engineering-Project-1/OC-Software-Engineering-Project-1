@@ -10,8 +10,8 @@ export default {
     },
     methods: {
         async getGames() {
-            const response = await GameService.getGameList()
-            this.gameList = response.data
+            const response = await GameService.getGameList();
+            this.gameList = response.data;
         },
         getUserDetails() {
             let token = localStorage.getItem("jwt");
