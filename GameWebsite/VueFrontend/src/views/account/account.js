@@ -23,6 +23,7 @@ export default {
             let token = localStorage.getItem("jwt");
             let decoded = VueJwtDecode.decode(token);
             this.user = decoded;
+            
             if (localStorage.getItem("jwt") == "") {
                 this.$router.push("/")
                 alert("Need to be authenticated")
@@ -38,6 +39,7 @@ export default {
     mounted(){
 
         this.getData(); //get data from the user
+        
 
     },
     

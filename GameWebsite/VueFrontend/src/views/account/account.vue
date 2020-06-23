@@ -4,7 +4,9 @@
         <div class="innerContent">
             <div class="userProfileContent">
                 <div class="container">
-                    <img src="./usericon.jpg" class="profilePic">
+
+                    <img v-if="user.avatar" :src="user.avatar" class="profilePic">
+                    <img v-else src="./usericon.jpg" class="profilePic">
                     <button class="changePicButton boldText">
                         <font-awesome-icon icon="edit" class="icon">
                             <router-link :to="{ name: 'updateAccount' }"> Change </router-link>
@@ -18,7 +20,7 @@
                         <div class="boldText largeText" style="margin-right: 20px;">Email:</div>
                         <div class="largerText"> {{ user.email }}</div>
                         <button class="changeEmailButton boldText">
-                            <font-awesome-icon icon="edit" class="icon"></font-awesome-icon>
+                            <font-awesome-icon icon="edit" class="icon">{{user.avatar}}</font-awesome-icon>
                             Change
                         </button>
                     </div>
