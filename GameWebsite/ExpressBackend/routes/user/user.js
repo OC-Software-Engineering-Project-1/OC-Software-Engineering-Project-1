@@ -238,7 +238,13 @@ router.post('/users/me/avatar',auth, upload.single('avatar'),async function(req,
         
         const targetPath = path.join(__dirname,"..","..", "public","avatars",user._id+path.extname(req.file.originalname).toLowerCase())
         //fs.renameSync(tempPath, targetPath)
-        sharp(tempPath).resize({ height:100, width:100}).toFile(targetPath) //Resize image 
+        sharp(tempPath).resize({ height:100, width:100}).toFile(targetPath).then(() => {
+            fs.unlink(tempPath, (err) => {
+                // if (err) throw err;
+                //console.log(err);
+              });
+          }); //Resize image 
+        
         user.avatar = user._id+path.extname(req.file.originalname).toLowerCase()
         await user.save()
         res.send({"avatar":"http://"+req.headers.host+"/static/avatars/"+req.user.avatar})
