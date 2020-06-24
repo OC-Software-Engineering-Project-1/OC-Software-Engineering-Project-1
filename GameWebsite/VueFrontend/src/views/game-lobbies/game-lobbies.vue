@@ -121,4 +121,4 @@
 
 <style src="bootstrap/dist/css/bootstrap.css"></style>
 <style src="bootstrap-vue/dist/bootstrap-vue.css"></style>
-<style src="./game-lobbies.css"></style>
+<style scoped src="./game-lobbies.css"></style>
