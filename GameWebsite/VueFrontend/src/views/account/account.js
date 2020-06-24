@@ -27,6 +27,7 @@ export default {
     },
     goBack(){
         this.$refs["my-modal"].hide();
+        
     },
     async deleteAvatar(){
         await AccountService.deleteAvatar();

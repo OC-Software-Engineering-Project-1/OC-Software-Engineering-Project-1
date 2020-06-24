@@ -7,35 +7,40 @@
           <img v-if="user.avatar" :src="user.avatar" class="profilePic" />
           <img v-else src="./usericon.jpg" class="profilePic" />
 
-    
-            <b-button id="show-btn" @click="showModal" class="changePicButton boldText">
-              <font-awesome-icon icon="edit" class="icon">
-                <router-link :to="{ name: 'updateAccount' }">
-                  Change
-                </router-link>
-              </font-awesome-icon>
-            </b-button>
-            <b-modal ref="my-modal"  hide-footer title="Edit Profile Picture">
-      <!-- <div class="d-block text-center">
-        <h3>Hello From My Modal!</h3>
-      </div> -->
-               <b-form-file accept="image/*"
-      v-model="file"
-      :state="Boolean(file)"
-      placeholder="Choose image file or drop it here..."
-      drop-placeholder="Drop file here..."
-    ></b-form-file>
-          <div class="mt-3">
-            <button class="btn btn-secondary ml-5" @click="goBack">Cancel</button>
-              <button class="btn btn-danger ml-5" @click="deleteAvatar">Remove</button>
-              <button class="btn btn-primary ml-5" @click="updateAvatar">Save</button>
-         </div>
-         <div class="mt-3"> 
-             <p class="text-danger" ref="error">{{error}}</p>
-         </div>
-      <!-- <b-button class="mt-3" variant="outline-danger" block @click="hideModal">Close Me</b-button>
-      <b-button class="mt-2" variant="outline-warning" block @click="toggleModal">Toggle Me</b-button> -->
-    </b-modal>
+          <b-button
+            id="show-btn"
+            @click="showModal"
+            class="changePicButton boldText"
+          >
+            <font-awesome-icon icon="edit" class="icon">
+              <router-link :to="{ name: 'updateAccount' }">
+                Change
+              </router-link>
+            </font-awesome-icon>
+          </b-button>
+          <b-modal ref="my-modal" hide-footer title="Edit Profile Picture">
+            <b-form-file
+              accept="image/*"
+              v-model="file"
+              :state="Boolean(file)"
+              placeholder="Choose image file or drop it here..."
+              drop-placeholder="Drop file here..."
+            ></b-form-file>
+            <div class="mt-3">
+              <button class="btn btn-secondary ml-5" @click="goBack">
+                Cancel
+              </button>
+              <button class="btn btn-danger ml-5" @click="deleteAvatar">
+                Remove
+              </button>
+              <button class="btn btn-primary ml-5" @click="updateAvatar">
+                Save
+              </button>
+            </div>
+            <div class="mt-3">
+              <p class="text-danger" ref="error">{{ error }}</p>
+            </div>
+          </b-modal>
         </div>
         <div class="userTextContent">
           <p class="boldText largestText">{{ user.nickName }}</p>

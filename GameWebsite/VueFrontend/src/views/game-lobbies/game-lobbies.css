@@ -179,6 +179,21 @@ a {
     margin-left: 45%;
 }
 
+.message {
+    clear:both;
+    text-align: center;
+    padding: 20px;
+    
+    font-weight: bold;
+
+    border: white;
+    border-top: lightgrey;
+    border-bottom: lightgray;
+    border-width: 2px;
+    border-style: solid;
+
+}
+
 
 
 

@@ -21,5 +21,11 @@ export default {
     return Api().delete("/users/me/avatar", {
         headers: { Authorization: "Bearer " + localStorage.getItem("jwt") },
       });
-  }
+  },
+
+    updateUser(user) {
+        return Api().put('/users/me', user,{ headers: { "Authorization": "Bearer " + localStorage.getItem("jwt") } })
+    },
 };
+    
+
