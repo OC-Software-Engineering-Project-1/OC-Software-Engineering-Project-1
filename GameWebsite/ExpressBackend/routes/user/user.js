@@ -5,6 +5,8 @@ const multer = require('multer')
 const auth =require('../../middleware/auth')
 const path = require('path')
 const fs = require('fs')
+
+const sharp = require('sharp')
 //get a list of users from the db
  router.get('/users',async function(req,res){
      try{
@@ -107,8 +109,9 @@ router.post('/users/logoutAll',auth, async function(req,res){
 router.put('/users/me',auth, async function(req,res){
     const updates = Object.keys(req.body)
     const allowedUpdates = ['birthDate', 'isActive', 'firstName', 'lastName',
-                            'password','nickName', 'email','isAdmin']
+                            'password','nickName', 'email','avatar' ,'isAdmin']
     const isValidOperation = updates.every((update)=>allowedUpdates.includes(update))
+    
     if(!isValidOperation){
         return res.status(400).send({'Error':'Invalid Updates!'});
     }
@@ -233,12 +236,15 @@ router.post('/users/me/avatar',auth, upload.single('avatar'),async function(req,
        
         const user = req.user
         const tempPath = req.file.path
+        
         const targetPath = path.join(__dirname,"..","..", "public","avatars",user._id+path.extname(req.file.originalname).toLowerCase())
-        fs.renameSync(tempPath, targetPath)
+        //fs.renameSync(tempPath, targetPath)
+        sharp(tempPath).resize({ height:100, width:100}).toFile(targetPath) //Resize image 
         user.avatar = user._id+path.extname(req.file.originalname).toLowerCase()
         await user.save()
         res.send({"avatar":"http://"+req.headers.host+"/static/avatars/"+req.user.avatar})
     }catch(e){
+        console.log(e.message)
         res.status(500).send(e)
     }
 })
