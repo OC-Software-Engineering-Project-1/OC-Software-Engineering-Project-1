@@ -2,6 +2,7 @@
     background-color: #ebebeb;
     height: calc(100vh - 65.5px);
     min-height: 500px;
+    min-width: 933px;
     font-family: 'Alata',sans-serif;
     color: #606060;
 }
@@ -9,9 +10,9 @@
 .header {
     margin: 0px 8%;
     padding: 1.2% 0px;
-    font-size: 24px;
-    font-stretch: 100%;
-    font-weight: 750;
+    color: #3f3f3f;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .innerContent {
@@ -22,4 +23,25 @@
     background-color: #ffffff;
     border: 1px solid #000000;
     min-height: 300px;
+}
+
+.container {
+    margin: 1%;
+    min-width: 98%;
+}
+
+p {
+    width: 100%;
+}
+
+.big {
+    font-size: large;
+}
+
+.credits {
+    margin: 0px 2%;
+}
+
+.bold {
+    color: #000000;
 }
