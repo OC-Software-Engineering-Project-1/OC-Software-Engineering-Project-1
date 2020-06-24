@@ -6,15 +6,17 @@
                 <div class="container">
                     <img src="./usericon.jpg" class="profilePic">
                     <button class="changePicButton boldText">
-                        <font-awesome-icon icon="edit" class="icon"></font-awesome-icon>
-                        Change
+                        <font-awesome-icon icon="edit" class="icon">
+                            <router-link :to="{ name: 'updateAccount' }"> Change </router-link>
+                        </font-awesome-icon>
+                       
                     </button>
                 </div>
                 <div class="userTextContent">
-                    <p class="boldText largestText">Placeholder Username</p>
+                    <p class="boldText largestText"> {{ user.nickName }}</p>
                     <div class="emailContent">
                         <div class="boldText largeText" style="margin-right: 20px;">Email:</div>
-                        <div class="largerText">Placeholder email</div>
+                        <div class="largerText"> {{ user.email }}</div>
                         <button class="changeEmailButton boldText">
                             <font-awesome-icon icon="edit" class="icon"></font-awesome-icon>
                             Change
@@ -27,17 +29,18 @@
                 <hr>
                 <div class="userActualStats">
                     <div>
-                        <div class="boldText largeText" style="margin-right: 30px;">Games Played:</div>
-                        <div class="boldText">34</div>
+                        <div class="boldText largeText" style="margin-right: 30px;">Birth Date:</div>
+                        <div class="boldText"> {{ user.birthDate }} </div>
                     </div>
                     <div>
                         <div class="boldText largeText" style="margin-right: 46px;">Games Won:</div>
-                        <div class="boldText">32</div>
+                        <div class="boldText">{{ user.gamesWon }} </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
+<script src="./account.js"></script>
 
 <style scoped src="./account.css"></style>
