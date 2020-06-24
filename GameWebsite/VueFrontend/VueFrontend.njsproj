@@ -87,6 +87,7 @@
     <Content Include="src\views\game-lobbies\game-lobbies.vue">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="src\views\games\games.css" />
     <Content Include="src\views\games\games.js">
       <SubType>Code</SubType>
     </Content>
