@@ -41,6 +41,7 @@ export default {
             const response = await AccountService.updateUser(this.user)
             alert(response.status)
             this.user = response.data;
+            this.$router.push("/account") //redirect to account page
             }catch(e){
                 alert(e)
             }
