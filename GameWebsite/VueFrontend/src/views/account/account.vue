@@ -7,9 +7,9 @@
                     <img src="./usericon.jpg" class="profilePic">
                     <button class="changePicButton boldText">
                         <font-awesome-icon icon="edit" class="icon">
-                            <router-link :to="{ name: 'Update' }"> Change </router-link>
+                            <router-link :to="{ name: 'update' }"> Change </router-link>
                         </font-awesome-icon>
-                       
+                       Change
                     </button>
                 </div>
                 <div class="userTextContent">
