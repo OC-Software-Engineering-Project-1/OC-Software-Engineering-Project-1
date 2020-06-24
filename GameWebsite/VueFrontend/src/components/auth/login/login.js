@@ -16,7 +16,7 @@ export default {
                 localStorage.setItem("jwt", token);
                 if (token) {
                     alert("Success", "Login Successful", "success");
-                    this.$router.push("/home");
+                    this.$router.push("/games");
                 }
             } catch (err) {
                 alert("Error", "Something Went Wrong", "error");
