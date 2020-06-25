@@ -1,9 +1,11 @@
 // Credits to Maegan Wilson (source: https://medium.com/@maeganwilson_/how-to-create-a-navigation-bar-in-vue-js-8a70e7f29f80)
+import AccountService from "@/services/accountService";
 export default {
     name: 'Navigation',
     data() {
         return {
             activeIndex: undefined,
+            avatar:"",
             links: [
                 {
                     id: 0,
@@ -41,6 +43,11 @@ export default {
         showList() {
             document.getElementById("myDropdown").classList.toggle("show");
         },
+        async getUserAvatar() {
+            const response = await AccountService.getUserAvatar();
+            this.avatar = response.data.avatar;
+          
+          },
         documentClick(e) {
             if (!e.target.matches('.profileBorder') && !e.target.matches('.profilePic')) {
                 var myDropdown = document.getElementById("myDropdown");
@@ -51,7 +58,8 @@ export default {
         } 
     },
     created () {
-        document.addEventListener('click', this.documentClick)
+        document.addEventListener('click', this.documentClick),
+        this.getUserAvatar()
     },
     destroyed () {  
         document.removeEventListener('click', this.documentClick)

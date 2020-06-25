@@ -4,7 +4,8 @@
     <div class="dropdown">
       <div class="dropbtn">
         <div class="profileBorder">
-          <img src="./usericon.jpg" alt="profile_icon" class="profilePic" @click="showList">
+          <img v-if="avatar" :src="avatar" alt="profile_icon" class="profilePic" @click="showList"/>
+          <img v-else src="./usericon.jpg" alt="profile_icon" class="profilePic" @click="showList">
         </div>
       </div>
       <div class="dropdown-content" id="myDropdown">
