@@ -16,7 +16,7 @@ export default {
     },
     async updateAvatar(){
         try{
-         const response = await AccountService.updateAvatar(this.file);
+          await AccountService.updateAvatar(this.file);
          //alert(response.status)
          this.$refs["my-modal"].hide();
          location.reload();
