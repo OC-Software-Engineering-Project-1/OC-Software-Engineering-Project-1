@@ -13,9 +13,9 @@
             class="changePicButton boldText"
           >
             <font-awesome-icon icon="edit" class="icon">
-              <!-- <router-link :to="{ name: 'updateAccount' }">
+             <!-- <router-link :to="{ name: 'update' }" style="color:blue">
                 Change
-              </router-link> -->
+              </router-link>  -->
             </font-awesome-icon>
           </b-button>
           <b-modal ref="my-modal" hide-footer title="Edit Profile Picture">
@@ -50,10 +50,10 @@
             </div>
             <div class="largerText">{{ user.email }}</div>
             <button class="changeEmailButton boldText">
-              <font-awesome-icon icon="edit" class="icon">{{
-                user.avatar
-              }}</font-awesome-icon>
-              Change
+              <font-awesome-icon icon="edit" class="icon"></font-awesome-icon>
+              <router-link :to="{ name: 'update' }" style="color:blue">
+                Change
+              </router-link> 
             </button>
           </div>
         </div>
