@@ -13,9 +13,9 @@
             class="changePicButton boldText"
           >
             <font-awesome-icon icon="edit" class="icon">
-              <router-link :to="{ name: 'updateAccount' }">
+              <!-- <router-link :to="{ name: 'updateAccount' }">
                 Change
-              </router-link>
+              </router-link> -->
             </font-awesome-icon>
           </b-button>
           <b-modal ref="my-modal" hide-footer title="Edit Profile Picture">

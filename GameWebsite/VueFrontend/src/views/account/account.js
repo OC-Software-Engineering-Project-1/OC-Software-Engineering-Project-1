@@ -37,6 +37,8 @@ export default {
     async getData() {
       const response = await AccountService.getUser();
       this.user = response.data;
+      this.user.birthDate = new Date(this.user.birthDate).toDateString()
+    
     },
     getUserDetails() {
       let token = localStorage.getItem("jwt");

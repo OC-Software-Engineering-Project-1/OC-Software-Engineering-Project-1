@@ -24,7 +24,7 @@ export default {
             const response = await AccountService.getUser()
             this.user = response.data;
             this.user.birthDate = new Date(this.user.birthDate).toDateString()
-            alert(this.user.birthDate)
+            //alert(this.user.birthDate)
                 
         },
         async updateUser() {
@@ -39,7 +39,7 @@ export default {
             delete this.user.isActive;
             delete this.user.gamesWon;
             const response = await AccountService.updateUser(this.user)
-            alert(response.status)
+            // alert(response.status)
             this.user = response.data;
             }catch(e){
                 alert(e)
