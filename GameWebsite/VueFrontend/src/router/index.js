@@ -7,6 +7,7 @@ import Game from "../views/game/game.vue";
 import About from "../views/about/about.vue";
 import Account from "../views/account/account.vue";
 import Community from "../views/community/community.vue";
+import Update from "../views/update/update.vue";
 
 Vue.use(VueRouter);
 const routes = [
@@ -79,6 +80,14 @@ const routes = [
         path: "/account",
         name: "account",
         component: Account,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: "/update",
+        name: "update",
+        component: Update,
         meta: {
             requiresAuth: true
         }

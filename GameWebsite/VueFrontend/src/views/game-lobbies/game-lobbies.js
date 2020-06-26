@@ -28,16 +28,12 @@ export default {
             if (this.gameDescription2.length <= 0) {
                 this.$refs.collapseButton.style.display = "none"
             }
-        },
-        async getLobbies() {
-            const response = await GameService.getGameLobbies()
-            this.lobbyList = response.data
 
-            // The below code filters out full lobbies.
-            //
-            //this.lobbyList = response.data.filter(function (lobby) {
-            //    return lobby.players.length != lobby.capacity
-            //})
+            const gameName = this.gameTitle
+            const lobbiesResponse = await GameService.getGameLobbies()
+            this.lobbyList = lobbiesResponse.data.filter(function (lobby) {
+                return lobby.game === gameName // && lobby.players.length != lobby.capacity
+            })
         },
         async createLobby() {
             const response = await GameService.getUser()
@@ -72,7 +68,6 @@ export default {
         }
     },
     created() {
-        this.getLobbies()
         this.getUserDetails(); // need this in other pages
     },
 };

@@ -38,8 +38,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+//Don't change the followeing two lines
+app.use('/static',express.static(path.join(__dirname, 'public')));//used in getting user profile picture
 app.use('/EmptyGame', express.static(path.join(__dirname, 'game_server/games/EmptyGame')));
+app.use('/Kintsugi', express.static(path.join(__dirname, 'game_server/games/Kintsugi')));
+app.use('/Cryptogram', express.static(path.join(__dirname, 'game_server/games/Cryptogram')));
 app.use(userRouter);
 app.use(scoreRouter);
 app.use(gameRouter);
@@ -47,6 +50,7 @@ app.use(gameSessionRoutes);
 app.use(friendRequestRoutes);
 app.use(groupRoutes);
 app.use(gameServerRoutes);
+
 
 
 
@@ -96,13 +100,13 @@ process.stdin.resume();
 
 const exitHandler = async ()=>{
     //make sure to clean up
-    console.log("Free up ports!!!")
+    // console.log("Free up ports!!!")
     let data = JSON.stringify({
         portsInUse: [],
       });
       fs.writeFileSync(SETTINGSPATH, data);
       await GameServer.deleteMany({})   //Empty gameserver Table
-      console.log("after delete") ; 
+      
       process.exit();
 
 }
