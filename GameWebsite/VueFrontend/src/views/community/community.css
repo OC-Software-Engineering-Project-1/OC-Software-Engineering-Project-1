@@ -1,0 +1,33 @@
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0;
+}
+
+.list-entry {
+	border-width: 1px 0 1px 0;
+	border-style: solid;
+	border-color: #033076;
+}
+
+.user-link {
+	text-decoration: underline;
+	color: #033076;
+}
+
+.image-placeholder {
+	width: 50px;
+	height: 50px;
+	border: 5px solid #033076;
+	border-radius: 25px;
+}
+
+.btn-orange {
+	background-color: #ffa834;
+	border: none;
+	height: 50px;
+	color: white;
+}
