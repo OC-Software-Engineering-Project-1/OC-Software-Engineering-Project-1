@@ -82,7 +82,26 @@
     <Content Include="src\views\community\community.css">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="src\views\community\community.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\views\community\community.vue" />
+    <Content Include="src\views\community\friend-requests\friend-requests.js" />
+    <Content Include="src\views\community\friend-requests\friend-requests.vue" />
+    <Content Include="src\views\community\friends-list\friends-list.js" />
+    <Content Include="src\views\community\friends-list\friends-list.vue" />
+    <Content Include="src\views\community\news\news.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\views\community\news\news.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\views\community\people-search\people-search.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\views\community\people-search\people-search.vue">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\views\game-lobbies\game-lobbies.css" />
     <Content Include="src\views\game-lobbies\game-lobbies.js">
       <SubType>Code</SubType>
@@ -145,6 +164,10 @@
     <Folder Include="src\views\about\" />
     <Folder Include="src\views\account\" />
     <Folder Include="src\views\community\" />
+    <Folder Include="src\views\community\friend-requests\" />
+    <Folder Include="src\views\community\friends-list\" />
+    <Folder Include="src\views\community\people-search\" />
+    <Folder Include="src\views\community\news\" />
     <Folder Include="src\views\games\" />
     <Folder Include="src\views\game\" />
     <Folder Include="src\views\game-lobbies\" />
